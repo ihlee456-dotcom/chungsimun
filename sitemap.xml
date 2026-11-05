@@ -3,57 +3,60 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
-    <loc>https://ihlee456-dotcom.github.io/CUNGSIMUN/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <loc>https://ihlee456-dotcom.github.io/chungsimun/</loc>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <image:image><image:loc>https://ihlee456-dotcom.github.io/CUNGSIMUN/og-image.png</image:loc></image:image>
+
+    <image:image>
+      <image:loc>https://ihlee456-dotcom.github.io/chungsimun/og-cover.jpg</image:loc>
+      <image:title>행2PM8PM 루프탑 단체 회식</image:title>
+      <image:caption>을지로 행2PM8PM 3층 루프탑에서 라이브와 함께하는 단체 회식</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ihlee456-dotcom.github.io/chungsimun/mongdungi-duck.jpg</image:loc>
+      <image:title>오리한판 몽둥이고기</image:title>
+      <image:caption>누적 5만 개 판매를 넘긴 행2PM8PM 대표 메뉴 오리 몽둥이고기</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ihlee456-dotcom.github.io/chungsimun/indoor-group.jpg</image:loc>
+      <image:title>실내 프라이빗 홀 단체석</image:title>
+      <image:caption>행2PM8PM 실내 프라이빗 홀을 단독으로 쓴 단체 모임</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ihlee456-dotcom.github.io/chungsimun/chey-signature.jpg</image:loc>
+      <image:title>최태원 회장 친필 사인</image:title>
+      <image:caption>2026년 10월 21일 방문 당시 남긴 ‘대박나세요!’ 친필 사인</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ihlee456-dotcom.github.io/chungsimun/menu-board.jpg</image:loc>
+      <image:title>행2PM8PM 메뉴판</image:title>
+      <image:caption>세트 할인과 메인·사이드 전체 가격표</image:caption>
+    </image:image>
+
     <video:video>
-      <video:thumbnail_loc>https://ihlee456-dotcom.github.io/CUNGSIMUN/clip-poster.jpg</video:thumbnail_loc>
-      <video:title>행2PM8PM 루프탑 공연 클립</video:title>
-      <video:description>컨택싱어 앱의 공연 클립 예시 영상. 을지로 라이브 와인바 행2PM8PM 루프탑 무대.</video:description>
-      <video:content_loc>https://ihlee456-dotcom.github.io/CUNGSIMUN/clip.mp4</video:content_loc>
-      <video:duration>26</video:duration>
-      <video:publication_date>2026-10-29T00:00:00+09:00</video:publication_date>
+      <video:thumbnail_loc>https://ihlee456-dotcom.github.io/chungsimun/reel-guest-review.jpg</video:thumbnail_loc>
+      <video:title>손님이 남긴 행2PM8PM 후기 — 매일 라이브, 금요일엔 벨기에 가수</video:title>
+      <video:description>을지로 행2PM8PM을 다녀간 손님이 남긴 후기 영상. 매일 라이브 공연이 열리고 금요일에는 벨기에 가수가 무대에 오른다는 내용.</video:description>
+      <video:content_loc>https://ihlee456-dotcom.github.io/chungsimun/reel-guest-review.mp4</video:content_loc>
+      <video:duration>18</video:duration>
+      <video:family_friendly>yes</video:family_friendly>
     </video:video>
-  </url>
-  <url>
-    <loc>https://ihlee456-dotcom.github.io/CUNGSIMUN/home.html</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-    <image:image><image:loc>https://ihlee456-dotcom.github.io/CUNGSIMUN/clip-poster.jpg</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://ihlee456-dotcom.github.io/CUNGSIMUN/schedule.html</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-    <image:image><image:loc>https://ihlee456-dotcom.github.io/CUNGSIMUN/clip-poster.jpg</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://ihlee456-dotcom.github.io/CUNGSIMUN/about.html</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ihlee456-dotcom.github.io/CUNGSIMUN/booking.html</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <image:image><image:loc>https://ihlee456-dotcom.github.io/CUNGSIMUN/clip-poster.jpg</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://ihlee456-dotcom.github.io/CUNGSIMUN/artist-register.html</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://ihlee456-dotcom.github.io/CUNGSIMUN/venue-register.html</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <video:video>
+      <video:thumbnail_loc>https://ihlee456-dotcom.github.io/chungsimun/reel-chey-rental.jpg</video:thumbnail_loc>
+      <video:title>SK 최태원 회장이 다녀간 을지로 맛집 · 단체 대관료 0원</video:title>
+      <video:description>벽에 걸린 친필 사인과 단체 대관 안내. 대관료와 최소주문금액 없이 1~3층 층별 프라이빗 대관이 가능하다.</video:description>
+      <video:content_loc>https://ihlee456-dotcom.github.io/chungsimun/reel-chey-rental.mp4</video:content_loc>
+      <video:duration>20</video:duration>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://ihlee456-dotcom.github.io/chungsimun/reel-platter-live.jpg</video:thumbnail_loc>
+      <video:title>하루 두 번 공연이 있는 곳 · 행플레이터와 와인</video:title>
+      <video:description>와인 한 잔과 행플레이터, 그리고 하루 두 차례 이어지는 라이브 무대.</video:description>
+      <video:content_loc>https://ihlee456-dotcom.github.io/chungsimun/reel-platter-live.mp4</video:content_loc>
+      <video:duration>24</video:duration>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
   </url>
 </urlset>
