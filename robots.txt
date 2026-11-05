@@ -1,43 +1,68 @@
-# 행2PM8PM — robots.txt
-# 도메인 연결 후 아래 Sitemap 주소를 실제 도메인으로 바꿔주세요.
+# 컨택싱어 — 검색엔진과 AI 검색 모두 허용 (관리자 화면 /admin/ 은 제외)
+
+User-agent: Googlebot
+Allow: /
+Disallow: /CUNGSIMUN/admin.html
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /CUNGSIMUN/admin.html
+
+User-agent: Yeti
+Allow: /
+Disallow: /CUNGSIMUN/admin.html
+
+User-agent: Daumoa
+Allow: /
+Disallow: /CUNGSIMUN/admin.html
+
+User-agent: Bingbot
+Allow: /
+Disallow: /CUNGSIMUN/admin.html
+
+User-agent: GPTBot
+Allow: /
+Disallow: /CUNGSIMUN/admin.html
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /CUNGSIMUN/admin.html
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /CUNGSIMUN/admin.html
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /CUNGSIMUN/admin.html
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /CUNGSIMUN/admin.html
+
+User-agent: Claude-User
+Allow: /
+Disallow: /CUNGSIMUN/admin.html
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /CUNGSIMUN/admin.html
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /CUNGSIMUN/admin.html
+
+User-agent: Applebot
+Allow: /
+Disallow: /CUNGSIMUN/admin.html
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /CUNGSIMUN/admin.html
 
 User-agent: *
 Allow: /
+Disallow: /CUNGSIMUN/admin.html
+Disallow: /CUNGSIMUN/404.html
 
-# 네이버 검색로봇
-User-agent: Yeti
-Allow: /
-
-# 다음 / 카카오
-User-agent: Daum
-Allow: /
-User-agent: daumoa
-Allow: /
-
-# AI 검색 / 생성형 검색 수집 허용 (GEO)
-User-agent: GPTBot
-Allow: /
-User-agent: OAI-SearchBot
-Allow: /
-User-agent: ChatGPT-User
-Allow: /
-User-agent: ClaudeBot
-Allow: /
-User-agent: Claude-SearchBot
-Allow: /
-User-agent: PerplexityBot
-Allow: /
-User-agent: Google-Extended
-Allow: /
-User-agent: Applebot
-Allow: /
-User-agent: Applebot-Extended
-Allow: /
-User-agent: Bingbot
-Allow: /
-User-agent: Amazonbot
-Allow: /
-User-agent: meta-externalagent
-Allow: /
-
-Sitemap: https://ihlee456-dotcom.github.io/chungsimun/sitemap.xml
+Sitemap: https://ihlee456-dotcom.github.io/CUNGSIMUN/sitemap.xml
