@@ -60,7 +60,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+KR:wght@500;700;900&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 
 <!-- ════════ 구조화 데이터 (네이버 · 구글 · AI 검색 공통) ════════ -->
 <script type="application/ld+json">
@@ -364,338 +365,459 @@
 </script>
 
 <style>
-/* ───────── 레이아웃 컨셉: 늦은 밤 을지로 통건물 — 벽돌 어둠 위로 떨어지는 백열등 빛.
-   층(1F·2F·3F)을 세로로 쌓은 구조를 페이지 리듬에 그대로 옮긴다. ───────── */
+/* ═══════════════════════════════════════════════════════════════
+   행2PM8PM — Editorial Night Edition
+   컨셉: 을지로 밤의 와인 리스트 · 공연 프로그램북.
+   다크 럭셔리 + 샴페인 골드 단일 포인트, 매거진형 12컬럼 그리드.
+   Type: Noto Serif KR(국문 디스플레이) · Playfair Display(영문/숫자) · Pretendard(본문)
+   ═══════════════════════════════════════════════════════════════ */
 :root{
-  /* Color */
-  --ink:#0d0907;          /* 벽돌 그림자 */
-  --ink-2:#17100c;        /* 들린 면 */
-  --ink-3:#221710;
-  --wine:#7d1424;         /* 옥스블러드 */
-  --wine-lit:#ab1e33;
-  --ember:#f0a741;        /* 백열 전구 */
-  --ember-soft:#ffd79a;
-  --cream:#f4ebdf;
-  --cream-dim:#b3a28e;
-  --line:rgba(244,235,223,.14);
+  /* Color — surface */
+  --bg:#0b0908;
+  --surface:#13100e;
+  --surface-2:#1b1714;
+  --surface-3:#241e1a;
+  /* Color — text */
+  --text:#f4ede3;
+  --text-2:#cdbfae;
+  --muted:#a3968a;
+  /* Color — brand */
+  --gold:#d9ab62;
+  --gold-soft:#efd5a6;
+  --gold-ink:#1e1306;
+  --wine:#6d1322;
+  --wine-2:#8f1d30;
+  --line:rgba(244,237,227,.12);
+  --line-strong:rgba(244,237,227,.22);
+  --line-gold:rgba(217,171,98,.38);
 
   /* Type */
-  --display:"Noto Serif KR",'Apple SD Gothic Neo','Malgun Gothic',serif;
-  --body:"Noto Sans KR",'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
-  --latin:"Cormorant Garamond",Georgia,serif;
+  --serif-ko:"Noto Serif KR","Apple SD Gothic Neo","Malgun Gothic",serif;
+  --sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --latin:"Playfair Display",Georgia,"Times New Roman",serif;
+
+  /* Space (spacious) */
+  --gutter:clamp(20px,4vw,48px);
+  --section:clamp(88px,12vw,168px);
+
+  /* Motion */
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --t-fast:.18s;
+  --t-med:.32s;
 
   color-scheme:dark;
 }
 
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{
-  margin:0; background:var(--ink); color:var(--cream);
-  font-family:var(--body); font-weight:400; font-size:16px; line-height:1.75;
-  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:var(--sans);font-weight:400;font-size:17px;line-height:1.75;letter-spacing:-.005em;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;
+  word-break:keep-all;overflow-wrap:break-word;
 }
+@media (max-width:640px){body{font-size:16px}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
 }
 img,video{max-width:100%;height:auto;display:block}
 picture{display:contents}
 [hidden]{display:none!important}
 a{color:inherit}
-h1,h2,h3,h4{font-family:var(--display);font-weight:900;line-height:1.3;text-wrap:balance;margin:0}
+h1,h2,h3,h4{font-family:var(--serif-ko);font-weight:700;line-height:1.28;text-wrap:balance;margin:0}
 p{margin:0}
-ul{margin:0;padding:0;list-style:none}
+ul,ol{margin:0;padding:0;list-style:none}
+figure{margin:0}
+button{font:inherit;color:inherit}
+.ico{width:1.1em;height:1.1em;flex:none;display:inline-block;vertical-align:-.15em}
+.num{font-variant-numeric:tabular-nums lining-nums}
+.hl{color:var(--gold)}
+::selection{background:var(--gold);color:var(--gold-ink)}
 
-.wrap{width:100%;max-width:1120px;margin-inline:auto;
-  padding-left:max(18px,env(safe-area-inset-left,0px));
-  padding-right:max(18px,env(safe-area-inset-right,0px));}
-.band{padding-block:clamp(56px,8vw,104px)}
-section[id]{scroll-margin-top:68px}
-.skip{position:absolute;left:-9999px;top:0;background:var(--ember);color:#1a0d05;padding:10px 16px;z-index:999;border-radius:0 0 8px 0}
+.wrap{width:100%;max-width:1280px;margin-inline:auto;
+  padding-left:max(var(--gutter),env(safe-area-inset-left,0px));
+  padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
+.band{padding-block:var(--section);position:relative}
+.band--alt{background:var(--surface)}
+section[id]{scroll-margin-top:72px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--gold);color:var(--gold-ink);padding:12px 18px;z-index:999;font-weight:700}
 .skip:focus{left:0}
-:focus-visible{outline:2px solid var(--ember);outline-offset:3px;border-radius:3px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
 
-/* ── 라벨 / 제목 ── */
-.eyebrow{font-family:var(--latin);font-style:italic;font-size:clamp(.95rem,2.4vw,1.1rem);
-  letter-spacing:.06em;color:var(--ember);margin-bottom:.5rem}
-.kicker{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.22em;
-  text-transform:uppercase;color:var(--ember);border:1px solid rgba(240,167,65,.4);
-  padding:.34rem .8rem;border-radius:999px;margin-bottom:1rem}
-.h2{font-size:clamp(1.65rem,5.2vw,2.75rem);letter-spacing:-.02em}
-.h3{font-size:clamp(1.15rem,3.2vw,1.45rem);letter-spacing:-.01em}
-.lead{color:var(--cream-dim);font-size:clamp(1rem,2.6vw,1.1rem);max-width:62ch}
-.hl{color:var(--ember)}
-.num{font-variant-numeric:tabular-nums}
+/* ── 스크롤 등장 (JS가 있을 때만 숨김 → JS 없어도 내용 보임) ── */
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.08s}.js .rv.d2{transition-delay:.16s}.js .rv.d3{transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}}
+
+/* ── 공통 타이포 ── */
+.label{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--sans);font-size:.74rem;font-weight:600;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.label::before{content:"";width:28px;height:1px;background:currentColor;opacity:.7}
+.it{font-family:var(--latin);font-style:italic;font-weight:400}
+.h2{font-size:clamp(2rem,4.6vw,3.6rem);font-weight:700;letter-spacing:-.035em;line-height:1.2}
+.h2 em{font-style:normal;color:var(--gold)}
+.h3{font-size:clamp(1.25rem,2.2vw,1.6rem);letter-spacing:-.02em}
+.lead{color:var(--text-2);font-size:clamp(1.02rem,1.4vw,1.14rem);line-height:1.85;max-width:60ch}
+.lead + .lead{margin-top:1rem}
+
+/* 섹션 머리: 12컬럼 에디토리얼 */
+.sec-head{display:grid;gap:1.4rem 2rem;grid-template-columns:1fr;margin-bottom:clamp(3rem,6vw,5.5rem)}
+.sec-index{display:flex;flex-direction:column;gap:.6rem}
+.sec-no{font-family:var(--latin);font-style:italic;font-size:clamp(3rem,6vw,5rem);line-height:.9;color:transparent;
+  -webkit-text-stroke:1px var(--line-gold)}
+.sec-body .h2{margin-bottom:1.4rem}
+@media(min-width:960px){
+  .sec-head{grid-template-columns:repeat(12,minmax(0,1fr))}
+  .sec-index{grid-column:1/4;padding-top:.6rem}
+  .sec-body{grid-column:4/13}
+}
+
+/* ── 버튼 ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:52px;text-decoration:none;
+  font-weight:600;font-size:.98rem;letter-spacing:-.01em;padding:.9rem 1.6rem;border-radius:2px;cursor:pointer;
+  border:1px solid transparent;transition:background var(--t-fast) var(--ease),color var(--t-fast) var(--ease),border-color var(--t-fast) var(--ease)}
+.btn .ico{transition:transform var(--t-med) var(--ease)}
+.btn:hover .arrow{transform:translateX(4px)}
+.btn-primary{background:var(--gold);color:var(--gold-ink)}
+.btn-primary:hover{background:var(--gold-soft)}
+.btn-ghost{border-color:var(--line-strong);color:var(--text);background:rgba(11,9,8,.3)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.cta-row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2.4rem}
 
 /* ── 상단 바 ── */
-.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;
-  background:rgba(13,9,7,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--line)}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);
-  z-index:41;background:rgba(13,9,7,.95)}
-.topbar .wrap{display:flex;align-items:center;gap:1rem;padding-block:.7rem;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--display);font-weight:900;
-  font-size:1.05rem;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}
-.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--ember);
-  box-shadow:0 0 12px 2px rgba(240,167,65,.75);flex:none}
-.navlinks{display:none;gap:1.4rem;font-size:.9rem;font-weight:500}
-.navlinks a{text-decoration:none;color:var(--cream-dim);transition:color .2s}
-.navlinks a:hover{color:var(--ember)}
-.topcall{display:inline-flex;align-items:center;gap:.4rem;background:var(--wine);
-  color:var(--cream);text-decoration:none;font-weight:700;font-size:.85rem;
-  padding:.55rem .95rem;border-radius:999px;white-space:nowrap;transition:background .2s}
-.topcall:hover{background:var(--wine-lit)}
-@media(min-width:900px){.navlinks{display:flex}}
+.topbar{position:fixed;inset:0 0 auto;z-index:40;padding-top:env(safe-area-inset-top,0px);
+  transition:background var(--t-med) var(--ease),border-color var(--t-med) var(--ease);border-bottom:1px solid transparent}
+.topbar.solid{background:rgba(11,9,8,.9);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);border-bottom-color:var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:1.5rem;justify-content:space-between;min-height:72px}
+.brand{display:flex;flex-direction:column;line-height:1.1;text-decoration:none;white-space:nowrap}
+.brand b{font-family:var(--serif-ko);font-weight:900;font-size:1.2rem;letter-spacing:-.02em}
+.brand small{font-size:.6rem;font-weight:600;letter-spacing:.3em;color:var(--gold);margin-top:.3rem}
+.navlinks{display:none;gap:clamp(1.2rem,2.2vw,2.2rem);font-size:.9rem;font-weight:500}
+.navlinks a{position:relative;text-decoration:none;color:var(--text-2);padding-block:.6rem;transition:color var(--t-fast)}
+.navlinks a::after{content:"";position:absolute;left:0;right:0;bottom:.3rem;height:1px;background:var(--gold);
+  transform:scaleX(0);transform-origin:left;transition:transform var(--t-med) var(--ease)}
+.navlinks a:hover{color:var(--text)}
+.navlinks a:hover::after{transform:scaleX(1)}
+.topcall{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;text-decoration:none;font-weight:600;font-size:.88rem;
+  padding:.55rem 1.05rem;border:1px solid var(--line-gold);color:var(--gold-soft);border-radius:2px;white-space:nowrap;
+  transition:background var(--t-fast),color var(--t-fast)}
+.topcall:hover{background:var(--gold);color:var(--gold-ink)}
+.topcall .t-long{display:none}
+@media(min-width:560px){.topcall .t-long{display:inline}.topcall .t-short{display:none}}
+@media(min-width:1040px){.navlinks{display:flex}}
 
 /* ── 히어로 ── */
-.hero{position:relative;isolation:isolate;overflow:hidden}
+.hero{position:relative;isolation:isolate;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
 .hero-media{position:absolute;inset:0;z-index:-2}
-.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 38%}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 40%;transform:scale(1.04);animation:heroZoom 14s var(--ease) forwards}
+@keyframes heroZoom{to{transform:scale(1)}}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;
   background:
-    radial-gradient(70% 55% at 50% 8%,rgba(240,167,65,.22),transparent 70%),
-    linear-gradient(95deg,rgba(13,9,7,.93) 0%,rgba(13,9,7,.80) 46%,rgba(13,9,7,.52) 100%),
-    linear-gradient(180deg,rgba(13,9,7,.72) 0%,rgba(13,9,7,.42) 42%,rgba(13,9,7,.97) 100%)}
-.hero .wrap{padding-block:clamp(62px,11vw,124px)}
-.hero h1{font-size:clamp(2rem,7.2vw,4rem);letter-spacing:-.035em;line-height:1.18}
-.hero h1 .line2{display:block;color:var(--ember);font-family:var(--display)}
-.hero-sub{margin-top:1.1rem;max-width:40ch;color:var(--cream-dim);font-size:clamp(1rem,2.8vw,1.15rem)}
-.badge-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.3rem}
-.badge{font-size:.76rem;font-weight:700;letter-spacing:.02em;padding:.36rem .76rem;border-radius:999px;
-  background:rgba(125,20,36,.55);border:1px solid rgba(240,167,65,.35);color:var(--ember-soft)}
-.cta-row{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.9rem}
-.btn{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;font-weight:700;
-  font-size:.95rem;padding:.85rem 1.5rem;border-radius:999px;transition:transform .15s,background .2s,border-color .2s}
-.btn:hover{transform:translateY(-2px)}
-.btn-primary{background:var(--ember);color:#231202;box-shadow:0 10px 30px -12px rgba(240,167,65,.8)}
-.btn-primary:hover{background:var(--ember-soft)}
-.btn-ghost{border:1px solid rgba(244,235,223,.38);color:var(--cream);background:rgba(13,9,7,.35)}
-.btn-ghost:hover{border-color:var(--ember);color:var(--ember)}
+    linear-gradient(90deg,rgba(11,9,8,.92) 0%,rgba(11,9,8,.7) 42%,rgba(11,9,8,.25) 100%),
+    linear-gradient(180deg,rgba(11,9,8,.65) 0%,rgba(11,9,8,0) 30%,rgba(11,9,8,.2) 60%,var(--bg) 100%)}
+.hero .wrap{width:100%;padding-top:140px;padding-bottom:clamp(48px,7vw,88px);display:grid;gap:3rem;grid-template-columns:1fr;align-items:end}
+@media(min-width:1040px){.hero .wrap{grid-template-columns:minmax(0,1fr) 300px}}
+.hero-eyebrow{font-family:var(--latin);font-style:italic;font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--gold-soft);margin-bottom:1.4rem}
+.hero h1{font-size:clamp(2.4rem,6.4vw,5rem);font-weight:900;letter-spacing:-.05em;line-height:1.08}
+.hero h1 .line2{display:block;color:var(--gold);font-weight:700}
+.hero-sub{margin-top:1.8rem;max-width:46ch;color:var(--text-2);font-size:clamp(1.02rem,1.5vw,1.15rem);line-height:1.85}
+.hero-sub strong{color:var(--text);font-weight:600}
+.badge-row{display:flex;flex-wrap:wrap;gap:.4rem 0;margin-top:2rem;font-size:.84rem;font-weight:500;color:var(--text-2)}
+.badge{display:inline-flex;align-items:center}
+.badge + .badge::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--gold);margin:0 .9rem}
+/* 층 인덱스 */
+.floor-index{display:none;border-top:1px solid var(--line-strong)}
+@media(min-width:1040px){.floor-index{display:block}}
+.floor-index a{display:grid;grid-template-columns:56px 1fr auto;align-items:baseline;gap:.8rem;padding:1rem 0;
+  border-bottom:1px solid var(--line-strong);text-decoration:none;transition:color var(--t-fast)}
+.floor-index .fi-no{font-family:var(--latin);font-style:italic;font-size:1.6rem;color:var(--gold)}
+.floor-index .fi-nm{font-weight:600}
+.floor-index .fi-cap{font-size:.78rem;color:var(--muted)}
+.floor-index a:hover .fi-nm{color:var(--gold-soft)}
+.scroll-cue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);width:1px;height:46px;background:var(--line-strong);overflow:hidden;display:none}
+.scroll-cue::after{content:"";position:absolute;left:0;top:-50%;width:1px;height:50%;background:var(--gold);animation:cue 2.2s var(--ease) infinite}
+@keyframes cue{to{top:100%}}
+@media(min-width:760px){.scroll-cue{display:block}}
 
-/* ── 한눈 요약 (AEO 답변 블록) ── */
-.facts{background:var(--ink-2);border-block:1px solid var(--line)}
-.facts .wrap{padding-block:clamp(28px,4.5vw,44px)}
-.facts-grid{display:grid;gap:1px;background:var(--line);
-  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));border:1px solid var(--line)}
-.fact{background:var(--ink-2);padding:1.1rem 1.15rem;min-width:0}
-.fact dt{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ember);margin-bottom:.35rem}
-.fact dd{margin:0;font-size:.97rem;line-height:1.6;color:var(--cream)}
-.fact dd small{display:block;color:var(--cream-dim);font-size:.83rem;margin-top:.15rem}
+/* ── 마키 띠 ── */
+.ticker{border-block:1px solid var(--line);background:var(--surface);overflow:hidden;white-space:nowrap}
+.ticker-track{display:inline-flex;gap:2.4rem;padding-block:1.05rem;animation:tick 48s linear infinite;
+  font-family:var(--latin);font-style:italic;font-size:clamp(1.1rem,1.8vw,1.45rem);color:var(--text-2)}
+.ticker-track span{display:inline-flex;align-items:center;gap:2.4rem}
+.ticker-track span::after{content:"";width:6px;height:6px;transform:rotate(45deg);background:var(--gold)}
+@keyframes tick{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}
 
-/* ── 섹션 공통 ── */
-.sec-head{max-width:66ch;margin-bottom:clamp(1.8rem,4vw,2.8rem)}
-.sec-head .lead{margin-top:.9rem}
+/* ── 한눈 요약 ── */
+.facts .wrap{padding-block:clamp(56px,7vw,96px)}
+.facts-grid{display:grid;grid-template-columns:1fr;margin:0;border-top:1px solid var(--line)}
+@media(min-width:640px){.facts-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1040px){.facts-grid{grid-template-columns:repeat(3,1fr)}}
+.fact{padding:1.6rem 0 1.7rem;border-bottom:1px solid var(--line);min-width:0;display:grid;grid-template-columns:2.6rem 1fr;gap:0 1rem}
+@media(min-width:640px){.fact{padding-right:2rem}}
+.fact::before{content:attr(data-n);font-family:var(--latin);font-style:italic;color:var(--gold);font-size:1rem;padding-top:.15rem;grid-row:span 2}
+.fact dt{font-size:.74rem;font-weight:600;letter-spacing:.2em;color:var(--muted);margin-bottom:.4rem}
+.fact dd{margin:0;font-size:1.08rem;font-weight:600;line-height:1.55;color:var(--text)}
+.fact dd small{display:block;color:var(--muted);font-weight:400;font-size:.88rem;margin-top:.2rem}
+.fact a{color:var(--gold);text-decoration:none}
 
-/* ── 층 구조 ── */
-.floors{display:grid;gap:1rem;grid-template-columns:1fr}
-@media(min-width:760px){.floors{grid-template-columns:repeat(3,1fr)}}
-.floor{position:relative;border:1px solid var(--line);background:
-  linear-gradient(180deg,var(--ink-3),var(--ink-2));padding:1.6rem 1.4rem 1.5rem;min-width:0;
-  display:flex;flex-direction:column;gap:.55rem}
-.floor .fl{font-family:var(--latin);font-size:2.6rem;line-height:1;color:var(--ember);font-weight:600}
-.floor h3{font-size:1.18rem}
-.floor p{color:var(--cream-dim);font-size:.93rem}
-.floor .cap{margin-top:auto;padding-top:.9rem;font-size:.8rem;letter-spacing:.06em;
-  color:var(--ember);border-top:1px solid var(--line)}
-.floor.is-best{border-color:rgba(240,167,65,.55);
-  background:linear-gradient(180deg,rgba(125,20,36,.42),var(--ink-2));
-  box-shadow:0 0 0 1px rgba(240,167,65,.18) inset}
-.floor-badge{align-self:flex-start;font-size:.66rem;font-weight:700;letter-spacing:.1em;
-  background:var(--ember);color:#231202;padding:.2rem .6rem;border-radius:999px;margin-bottom:.1rem}
+/* ── 상황 칩 ── */
+.usecases{display:flex;flex-wrap:wrap;gap:.6rem}
+.usecase{border:1px solid var(--line-strong);padding:.55rem 1.05rem;border-radius:999px;font-size:.9rem;color:var(--text-2)}
 
-/* ── 공연 시간표 ── */
-.schedule{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);
-  grid-template-columns:1fr}
-@media(min-width:620px){.schedule{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:960px){.schedule{grid-template-columns:repeat(3,1fr)}}
-.slot{background:var(--ink-2);padding:1.15rem 1.25rem;display:flex;align-items:baseline;
-  justify-content:space-between;gap:1rem;min-width:0}
-.slot .day{font-weight:700;font-size:1rem}
-.slot .time{font-family:var(--latin);font-size:1.5rem;color:var(--ember);font-variant-numeric:tabular-nums;white-space:nowrap}
-.slot .time small{font-family:var(--body);font-size:.68rem;color:var(--cream-dim);display:block;text-align:right;letter-spacing:.08em}
-.slot.today{background:linear-gradient(135deg,rgba(125,20,36,.5),var(--ink-2));
-  box-shadow:inset 0 0 0 1px rgba(240,167,65,.45)}
-.slot.today .day::after{content:"오늘";margin-left:.5rem;font-size:.66rem;font-weight:700;
-  letter-spacing:.12em;background:var(--ember);color:#231202;padding:.14rem .45rem;border-radius:999px;vertical-align:middle}
-
-/* ── 대관 혜택 ── */
-.perks{display:grid;gap:1rem;grid-template-columns:1fr;margin-top:1.6rem}
-@media(min-width:680px){.perks{grid-template-columns:repeat(3,1fr)}}
-.perk{border:1px solid rgba(240,167,65,.3);background:rgba(125,20,36,.17);
-  padding:1.4rem 1.3rem;min-width:0}
-.perk .big{font-family:var(--latin);font-size:2.9rem;line-height:1;color:var(--ember);font-weight:600;letter-spacing:-.02em}
-.perk h3{font-size:1.05rem;margin-top:.45rem}
-.perk p{color:var(--cream-dim);font-size:.9rem;margin-top:.35rem}
-
-.usecases{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.8rem}
-.usecase{border:1px solid var(--line);background:var(--ink-2);padding:.5rem 1rem;
-  border-radius:999px;font-size:.88rem;color:var(--cream)}
-
-/* ── 최태원 섹션 ── */
-.vip{background:linear-gradient(180deg,var(--ink-2),var(--ink));border-block:1px solid var(--line)}
-.vip-grid{display:grid;gap:clamp(1.5rem,4vw,2.8rem);grid-template-columns:1fr;align-items:center}
-@media(min-width:880px){.vip-grid{grid-template-columns:minmax(0,1fr) minmax(0,.85fr)}}
-.vip-imgs{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;min-width:0}
-.vip-imgs figure{margin:0;min-width:0}
-.vip-imgs img{width:100%;aspect-ratio:3/4;object-fit:cover;border:1px solid var(--line);max-width:100%}
-.vip-imgs figcaption{font-size:.76rem;color:var(--cream-dim);margin-top:.45rem;line-height:1.5}
-.quote{font-family:var(--display);font-weight:900;font-size:clamp(1.5rem,4.6vw,2.2rem);
-  color:var(--ember);letter-spacing:-.02em;margin:.4rem 0 .9rem}
-
-/* ── 메뉴 ── */
-.sig{display:grid;gap:1.1rem;grid-template-columns:1fr;margin-bottom:2.4rem}
-@media(min-width:720px){.sig{grid-template-columns:repeat(3,1fr)}}
-.sig figure{margin:0;border:1px solid var(--line);background:var(--ink-2);min-width:0;
-  display:flex;flex-direction:column}
-.sig picture,.sig figure>a{display:block}
-.sig img{width:100%;aspect-ratio:4/3;object-fit:cover}
-.sig figcaption{padding:1rem 1.1rem 1.15rem;display:flex;flex-direction:column;gap:.3rem;flex:1}
-.sig .nm{font-family:var(--display);font-weight:900;font-size:1.08rem}
-.sig .ds{font-size:.85rem;color:var(--cream-dim);line-height:1.6}
-.sig .pr{margin-top:auto;padding-top:.6rem;font-family:var(--latin);font-size:1.3rem;color:var(--ember);font-variant-numeric:tabular-nums}
-.sig .tag{align-self:flex-start;font-size:.68rem;font-weight:700;letter-spacing:.1em;
-  background:var(--wine);color:var(--ember-soft);padding:.18rem .5rem;border-radius:3px}
-
-.menucols{display:grid;gap:clamp(1.1rem,3vw,1.6rem);grid-template-columns:1fr;align-items:start}
-@media(min-width:860px){.menucols{grid-template-columns:1.08fr 1fr}}
-.mlist{min-width:0;border:1px solid var(--line);background:rgba(13,9,7,.5)}
-.mlist h3{display:flex;align-items:baseline;gap:.55rem;flex-wrap:wrap;
-  font-family:var(--latin);font-weight:600;font-size:1.3rem;letter-spacing:.16em;color:var(--ember);
-  padding:.95rem 1.25rem;border-bottom:1px solid rgba(240,167,65,.32);background:rgba(125,20,36,.2)}
-.mlist h3 span{font-family:var(--body);font-weight:400;font-size:.76rem;letter-spacing:0;color:var(--cream-dim)}
-.mrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.35rem .9rem;align-items:baseline;
-  padding:.82rem 1.25rem;border-bottom:1px solid var(--line)}
-.mrow:last-child{border-bottom:0}
-.mrow .nm{min-width:0;font-size:1rem;font-weight:500;word-break:keep-all;line-height:1.5}
-.mrow .nm em{font-style:normal;font-weight:400;font-size:.86rem;color:var(--cream-dim)}
-.mrow .pr{font-variant-numeric:tabular-nums;font-weight:700;font-size:1.02rem;
-  white-space:nowrap;color:var(--ember-soft)}
-.mrow .pr i{font-style:normal;font-weight:400;font-size:.78rem;color:var(--cream-dim);margin-left:.12rem}
-.best{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.1em;vertical-align:.14em;
-  background:var(--wine);color:var(--ember-soft);padding:.14rem .42rem;border-radius:3px;margin-right:.45rem}
-.setbox{border:1px solid rgba(240,167,65,.4);background:rgba(125,20,36,.2);padding:1.2rem 1.3rem;margin-bottom:1.8rem}
-.setbox h3{color:var(--ember);font-size:1.02rem;margin-bottom:.7rem}
-.setrow{display:flex;flex-wrap:wrap;gap:.4rem .8rem;align-items:baseline;padding:.42rem 0;font-size:.94rem}
-.setrow .disc{font-weight:700;color:var(--ember);white-space:nowrap;margin-left:auto}
-.notice{margin-top:1.4rem;font-size:.84rem;color:var(--cream-dim);border-top:1px solid var(--line);padding-top:.9rem}
+/* ── 공연 프로그램 ── */
+.program{border-top:1px solid var(--line-strong);margin-top:3rem}
+.slot{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:1rem 2rem;padding:1.35rem 0;border-bottom:1px solid var(--line);
+  position:relative;transition:background var(--t-med) var(--ease)}
+@media(min-width:760px){.slot{grid-template-columns:200px minmax(0,1fr) auto;padding:1.6rem 1rem}}
+.slot .part{display:none;font-size:.78rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+@media(min-width:760px){.slot .part{display:block}}
+.slot .day{font-weight:600;font-size:1.08rem}
+.slot .time{font-family:var(--latin);font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1;color:var(--text);white-space:nowrap}
+.slot:hover{background:var(--surface-2)}
+.slot.today{background:linear-gradient(90deg,rgba(109,19,34,.55),rgba(109,19,34,0))}
+.slot.today .time{color:var(--gold)}
+.slot.today .day::after{content:"TONIGHT";margin-left:.75rem;font-size:.64rem;font-weight:700;letter-spacing:.2em;
+  background:var(--gold);color:var(--gold-ink);padding:.22rem .5rem;vertical-align:.18em}
 
 /* ── 릴스 ── */
-.reels{display:grid;gap:1rem;grid-template-columns:1fr}
-@media(min-width:680px){.reels{grid-template-columns:repeat(3,1fr)}}
-.reel{position:relative;border:1px solid var(--line);background:var(--ink-2);min-width:0}
-.reel video{width:100%;aspect-ratio:9/16;object-fit:cover;background:#000}
-.reel .cap{padding:.85rem 1rem;font-size:.88rem;color:var(--cream-dim);line-height:1.55}
-.soundbtn{position:absolute;top:.6rem;right:.6rem;z-index:2;cursor:pointer;
-  font:inherit;font-size:.76rem;font-weight:700;padding:.34rem .72rem;border-radius:999px;
-  background:rgba(13,9,7,.72);border:1px solid rgba(244,235,223,.3);color:var(--cream);
-  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:border-color .2s,color .2s}
-.soundbtn:hover{border-color:var(--ember);color:var(--ember)}
-.soundbtn[aria-pressed="true"]{border-color:var(--ember);color:var(--ember)}
+.reels{display:grid;gap:clamp(.9rem,2vw,1.6rem);grid-template-columns:1fr;margin-top:clamp(3rem,6vw,5rem)}
+@media(min-width:720px){.reels{grid-template-columns:repeat(3,1fr)}.reel:nth-child(2){transform:translateY(48px)}}
+.reel{position:relative;min-width:0}
+.reel-frame{position:relative;overflow:hidden;background:#000}
+.reel video{width:100%;aspect-ratio:9/16;object-fit:cover}
+.reel .cap{padding-top:1rem;font-size:.92rem;color:var(--text-2);line-height:1.6}
+.reel .cap b{display:block;font-family:var(--latin);font-style:italic;font-weight:400;color:var(--gold);font-size:.95rem;margin-bottom:.2rem}
+.soundbtn{position:absolute;top:.75rem;right:.75rem;z-index:2;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;min-height:44px;
+  font-size:.8rem;font-weight:600;padding:.5rem .9rem;border-radius:999px;
+  background:rgba(11,9,8,.66);border:1px solid rgba(244,237,227,.28);color:var(--text);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:border-color var(--t-fast),color var(--t-fast)}
+.soundbtn:hover,.soundbtn[aria-pressed="true"]{border-color:var(--gold);color:var(--gold)}
+.soundbtn .on{display:none}
+.soundbtn[aria-pressed="true"] .on{display:inline-block}
+.soundbtn[aria-pressed="true"] .off{display:none}
 
-/* ── 갤러리 ── */
-.gallery{display:grid;gap:.7rem;grid-template-columns:repeat(2,1fr)}
-@media(min-width:760px){.gallery{grid-template-columns:repeat(4,1fr)}}
-.gallery figure{margin:0;min-width:0;position:relative;overflow:hidden;border:1px solid var(--line)}
-.gallery img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;transition:transform .5s ease}
-.gallery figure:hover img{transform:scale(1.06)}
-.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:.7rem .8rem .6rem;
-  font-size:.76rem;color:var(--cream);background:linear-gradient(0deg,rgba(13,9,7,.92),transparent)}
+/* ── VIP (매거진 스프레드) ── */
+.vip{background:var(--surface);overflow:hidden}
+.vip-grid{display:grid;gap:clamp(3rem,6vw,5rem);grid-template-columns:1fr;align-items:center}
+@media(min-width:960px){.vip-grid{grid-template-columns:repeat(12,minmax(0,1fr))}.vip-text{grid-column:1/7}.vip-imgs{grid-column:7/13}}
+.vip .label{margin-bottom:1.8rem}
+.quote{font-family:var(--serif-ko);font-weight:900;font-size:clamp(2.4rem,5vw,4.2rem);line-height:1.05;white-space:nowrap;
+  color:var(--gold);letter-spacing:-.05em;margin:1.8rem 0 2rem}
+.vip-meta{display:flex;flex-wrap:wrap;gap:.5rem 1.6rem;margin-top:2rem;padding-top:1.4rem;border-top:1px solid var(--line);font-size:.86rem;color:var(--muted)}
+.vip-meta b{color:var(--text);font-weight:600;margin-right:.4rem}
+.vip-imgs{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.8rem,1.6vw,1.4rem);min-width:0}
+.vip-imgs figure{min-width:0}
+.vip-imgs figure:nth-child(2){margin-top:clamp(2.5rem,6vw,5rem)}
+.vip-imgs img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.vip-imgs figcaption{font-size:.8rem;color:var(--muted);margin-top:.75rem;line-height:1.55}
+
+/* ── 대관 혜택: 대형 숫자 ── */
+.perks{display:grid;grid-template-columns:1fr;border-top:1px solid var(--line-strong)}
+@media(min-width:760px){.perks{grid-template-columns:repeat(3,1fr)}}
+.perk{padding:2rem 0 2.2rem;border-bottom:1px solid var(--line);min-width:0}
+@media(min-width:760px){.perk{padding:2.4rem 2rem 2.6rem;border-bottom:0;border-left:1px solid var(--line)}.perk:first-child{border-left:0;padding-left:0}}
+.perk .big{font-family:var(--latin);font-size:clamp(3.6rem,7vw,5.6rem);line-height:.95;color:var(--gold);letter-spacing:-.03em}
+.perk .big.ko{font-family:var(--serif-ko);font-weight:900;font-size:clamp(3rem,5.6vw,4.4rem)}
+.perk h3{font-size:1.2rem;margin-top:1.2rem}
+.perk p{color:var(--text-2);font-size:.95rem;margin-top:.5rem}
+
+/* ── 층 구조: 건물 단면 ── */
+.floors-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:1rem;margin:clamp(4rem,8vw,6.5rem) 0 1.6rem}
+.floors-head p{color:var(--muted);font-size:.9rem}
+.floors{border-top:1px solid var(--line-strong)}
+.floor{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.4rem 1.6rem;padding:2rem 0;border-bottom:1px solid var(--line);position:relative}
+@media(min-width:860px){.floor{grid-template-columns:150px minmax(0,1.1fr) minmax(0,1.6fr) 200px;align-items:start;gap:2rem;padding:2.4rem 1.4rem}}
+.floor .fl{font-family:var(--latin);font-size:clamp(3rem,5vw,4.2rem);line-height:.9;color:var(--text);grid-row:span 3}
+@media(min-width:860px){.floor .fl{grid-row:auto}}
+.floor h3{font-size:1.4rem}
+.floor h3 small{display:block;font-family:var(--latin);font-style:italic;font-weight:400;font-size:.9rem;color:var(--muted);margin-top:.25rem}
+.floor p{color:var(--text-2);font-size:.95rem}
+.floor .cap{font-size:.86rem;font-weight:600;color:var(--gold-soft)}
+@media(min-width:860px){.floor .cap{text-align:right;padding-top:.35rem}}
+.floor.is-best{background:linear-gradient(90deg,rgba(109,19,34,.5),rgba(109,19,34,.08))}
+.floor.is-best .fl{color:var(--gold)}
+.floor-badge{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.16em;background:var(--gold);color:var(--gold-ink);
+  padding:.25rem .55rem;margin-bottom:.7rem}
+.floors-note{color:var(--text-2);font-size:.95rem;margin-top:1.6rem;max-width:72ch}
+
+.sub-h{display:flex;align-items:center;gap:1rem;margin:clamp(3.5rem,7vw,5.5rem) 0 1.4rem}
+.sub-h::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* ── 갤러리: 벤토 ── */
+.gallery{display:grid;gap:clamp(.6rem,1.2vw,1rem);grid-template-columns:repeat(2,1fr);margin-top:clamp(2.5rem,5vw,4rem)}
+@media(min-width:860px){.gallery{grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(180px,20vw,280px)}
+  .gallery .tall{grid-column:span 2;grid-row:span 2}.gallery .wide{grid-column:span 2}}
+.gallery figure{min-width:0;position:relative;overflow:hidden;background:var(--surface-2)}
 .gallery .tall{grid-column:span 2}
-@media(min-width:760px){.gallery .tall{grid-column:span 2}}
+.gallery img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;transition:transform 1.2s var(--ease)}
+@media(min-width:860px){.gallery img{aspect-ratio:auto}}
+.gallery figure:hover img{transform:scale(1.05)}
+.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:2.2rem 1.1rem .9rem;font-size:.84rem;font-weight:500;color:var(--text);
+  background:linear-gradient(0deg,rgba(11,9,8,.9),transparent)}
+
+/* ── 메뉴 ── */
+.sig{display:grid;gap:clamp(1.6rem,3vw,2.4rem);grid-template-columns:1fr;margin-bottom:clamp(3.5rem,7vw,5.5rem)}
+@media(min-width:760px){.sig{grid-template-columns:repeat(3,1fr)}}
+.sig figure{min-width:0;display:flex;flex-direction:column}
+.sig .ph{overflow:hidden;background:var(--surface-2);display:block}
+.sig img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform 1.2s var(--ease)}
+.sig figure:hover img{transform:scale(1.04)}
+.sig figcaption{padding-top:1.2rem;display:flex;flex-direction:column;gap:.4rem;flex:1}
+.sig .nm{font-family:var(--serif-ko);font-weight:700;font-size:1.3rem;letter-spacing:-.02em}
+.sig .ds{font-size:.92rem;color:var(--text-2);line-height:1.7}
+.sig .pr{margin-top:auto;padding-top:.9rem;border-top:1px solid var(--line);font-family:var(--latin);font-size:1.5rem;color:var(--gold)}
+.sig .pr.txt{font-family:var(--sans);font-size:.9rem;color:var(--gold-soft)}
+.sig .tag{align-self:flex-start;font-size:.68rem;font-weight:700;letter-spacing:.18em;color:var(--gold)}
+
+.setbox{display:grid;gap:1.2rem;grid-template-columns:1fr;padding:clamp(1.6rem,3vw,2.4rem);margin-bottom:clamp(3rem,6vw,4.5rem);
+  background:linear-gradient(120deg,rgba(109,19,34,.55),rgba(109,19,34,.15));border:1px solid var(--line-gold)}
+@media(min-width:860px){.setbox{grid-template-columns:280px 1fr;align-items:center;gap:2.4rem}}
+.setbox h3{font-size:1.25rem}
+.setbox h3 small{display:block;font-family:var(--latin);font-style:italic;font-weight:400;font-size:.95rem;color:var(--gold);margin-bottom:.3rem}
+.setrow{display:flex;flex-wrap:wrap;gap:.3rem .9rem;align-items:baseline;padding:.75rem 0;border-bottom:1px solid var(--line);font-size:.96rem}
+.setrow:last-child{border-bottom:0}
+.setrow span{color:var(--text-2)}
+.setrow .disc{font-weight:700;color:var(--gold);white-space:nowrap;margin-left:auto}
+
+.menucols{display:grid;gap:clamp(2.4rem,5vw,5rem);grid-template-columns:1fr;align-items:start}
+@media(min-width:900px){.menucols{grid-template-columns:1fr 1fr}}
+.mlist{min-width:0}
+.mlist h3{display:flex;align-items:baseline;gap:.9rem;flex-wrap:wrap;padding-bottom:1rem;margin-bottom:.4rem;border-bottom:1px solid var(--line-strong);
+  font-family:var(--latin);font-style:italic;font-weight:400;font-size:2.1rem;color:var(--gold)}
+.mlist h3 span{font-family:var(--sans);font-style:normal;font-size:.8rem;color:var(--muted)}
+.mrow{display:flex;align-items:baseline;gap:.8rem;padding:.85rem 0}
+.mrow .nm{min-width:0;font-size:1.02rem;font-weight:500;line-height:1.5}
+.mrow .nm em{display:block;font-style:normal;font-weight:400;font-size:.84rem;color:var(--muted)}
+.mrow .lead-dots{flex:1;min-width:1.5rem;border-bottom:1px dotted rgba(244,237,227,.25);transform:translateY(-.3em)}
+.mrow .pr{font-variant-numeric:tabular-nums;font-weight:600;font-size:1.02rem;white-space:nowrap;color:var(--text)}
+.mrow .pr i{font-style:normal;font-weight:400;font-size:.8rem;color:var(--muted);margin-left:.1rem}
+.best{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.16em;vertical-align:.2em;color:var(--gold);
+  border:1px solid var(--line-gold);padding:.08rem .38rem;margin-right:.5rem}
+.notice{margin-top:3rem;font-size:.88rem;color:var(--muted);border-top:1px solid var(--line);padding-top:1.4rem}
 
 /* ── 오시는 길 ── */
-.loc-grid{display:grid;gap:clamp(1.4rem,4vw,2.6rem);grid-template-columns:1fr}
-@media(min-width:860px){.loc-grid{grid-template-columns:1fr 1fr}}
-.infolist{display:grid;gap:0;border-top:1px solid var(--line);min-width:0}
-.inforow{display:grid;grid-template-columns:5.4rem 1fr;gap:1rem;padding:.95rem 0;
-  border-bottom:1px solid var(--line);align-items:start;min-width:0}
-.inforow dt{font-size:.78rem;font-weight:700;letter-spacing:.12em;color:var(--ember);padding-top:.2rem}
-.inforow dd{margin:0;min-width:0;font-size:.97rem;line-height:1.7;word-break:keep-all;overflow-wrap:anywhere}
-.inforow dd small{display:block;color:var(--cream-dim);font-size:.84rem}
-.copybtn{margin-left:.5rem;font:inherit;font-size:.74rem;background:transparent;color:var(--ember);
-  border:1px solid rgba(240,167,65,.45);border-radius:999px;padding:.1rem .55rem;cursor:pointer}
-.copybtn:hover{background:rgba(240,167,65,.14)}
+.loc-grid{display:grid;gap:clamp(2.4rem,5vw,4.5rem);grid-template-columns:1fr}
+@media(min-width:960px){.loc-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}}
+.infolist{display:grid;border-top:1px solid var(--line-strong);min-width:0;margin:0}
+.inforow{display:grid;grid-template-columns:5.6rem 1fr;gap:1.2rem;padding:1.25rem 0;border-bottom:1px solid var(--line);align-items:start;min-width:0}
+.inforow dt{font-size:.76rem;font-weight:600;letter-spacing:.18em;color:var(--gold);padding-top:.25rem}
+.inforow dd{margin:0;min-width:0;font-size:1rem;line-height:1.75;overflow-wrap:anywhere}
+.inforow dd small{display:block;color:var(--muted);font-size:.87rem}
+.inforow a{color:var(--gold-soft);text-underline-offset:3px}
+.copybtn{margin-left:.6rem;font-size:.75rem;font-weight:600;background:transparent;color:var(--gold);min-height:32px;
+  border:1px solid var(--line-gold);border-radius:999px;padding:.2rem .75rem;cursor:pointer;transition:background var(--t-fast)}
+.copybtn:hover{background:rgba(217,171,98,.14)}
+.loc-fig img{width:100%;object-fit:cover;aspect-ratio:4/5}
+.loc-fig figcaption{font-size:.84rem;color:var(--muted);margin-top:.8rem}
 
 /* ── FAQ ── */
-.faq{display:grid;gap:.6rem;max-width:860px}
-.faq details{border:1px solid var(--line);background:var(--ink-2)}
-.faq summary{cursor:pointer;list-style:none;padding:1.05rem 1.2rem;font-weight:700;font-size:1rem;
-  display:flex;gap:.9rem;align-items:flex-start;word-break:keep-all}
+.faq-grid{display:grid;gap:2.4rem;grid-template-columns:1fr}
+@media(min-width:960px){.faq-grid{grid-template-columns:repeat(12,minmax(0,1fr))}
+  .faq-grid .sec-head{grid-column:1/5;display:block;position:sticky;top:110px;align-self:start;margin:0}
+  .faq-grid .sec-index{margin-bottom:1.6rem}
+  .faq{grid-column:5/13}}
+.faq{border-top:1px solid var(--line-strong)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;padding:1.45rem 0;font-weight:600;font-size:1.06rem;display:flex;gap:1.2rem;align-items:flex-start;
+  transition:color var(--t-fast)}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";margin-left:auto;color:var(--ember);font-size:1.3rem;line-height:1;flex:none;transition:transform .2s}
+.faq summary::before{content:"Q";font-family:var(--latin);font-style:italic;font-weight:400;color:var(--gold);font-size:1.2rem;line-height:1.3;flex:none}
+.faq summary::after{content:"";margin-left:auto;flex:none;width:12px;height:12px;margin-top:.45rem;
+  background:linear-gradient(var(--gold),var(--gold)) center/100% 1.5px no-repeat,linear-gradient(var(--gold),var(--gold)) center/1.5px 100% no-repeat;
+  transition:transform var(--t-med) var(--ease)}
 .faq details[open] summary::after{transform:rotate(45deg)}
-.faq summary:hover{color:var(--ember)}
-.faq .ans{padding:0 1.2rem 1.2rem;color:var(--cream-dim);font-size:.95rem;line-height:1.8;word-break:keep-all}
+.faq summary:hover{color:var(--gold-soft)}
+.faq .ans{padding:0 2.2rem 1.6rem 2.2rem;color:var(--text-2);font-size:.98rem;line-height:1.85}
 
 /* ── 마지막 CTA ── */
-.finalcta{background:linear-gradient(135deg,var(--wine) 0%,#4a0c17 60%,var(--ink) 100%);
-  border-top:1px solid rgba(240,167,65,.35)}
-.finalcta .wrap{text-align:center;padding-block:clamp(50px,8vw,88px)}
-.finalcta h2{font-size:clamp(1.55rem,5vw,2.5rem)}
-.finalcta p{color:rgba(244,235,223,.82);margin-top:.8rem}
+.finalcta{position:relative;isolation:isolate;overflow:hidden;background:var(--wine)}
+.finalcta::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(60% 80% at 85% 10%,rgba(217,171,98,.28),transparent 60%),linear-gradient(160deg,#7a1627 0%,#3c0a13 70%,var(--bg) 100%)}
+.finalcta .wrap{padding-block:clamp(96px,13vw,180px);text-align:center}
+.finalcta .label{justify-content:center;margin-bottom:1.6rem;color:var(--gold-soft)}
+.finalcta h2{font-size:clamp(2.1rem,5.4vw,4.2rem);font-weight:900;letter-spacing:-.045em}
+.finalcta p{color:rgba(244,237,227,.85);margin-top:1.2rem;font-size:1.05rem}
 .finalcta .cta-row{justify-content:center}
-.phone-big{display:inline-block;font-family:var(--latin);font-size:clamp(1.9rem,6.4vw,3rem);
-  color:var(--ember);text-decoration:none;letter-spacing:.01em;margin-top:1.1rem;font-variant-numeric:tabular-nums}
+.phone-big{display:inline-block;font-family:var(--latin);font-size:clamp(2.6rem,9vw,7rem);line-height:1;color:var(--gold-soft);text-decoration:none;
+  letter-spacing:-.02em;margin-top:2.2rem;transition:color var(--t-fast)}
+.phone-big:hover{color:#fff}
 
 /* ── 푸터 ── */
-footer{background:var(--ink);border-top:1px solid var(--line);font-size:.86rem;color:var(--cream-dim)}
-footer .wrap{padding-block:2.4rem;display:grid;gap:1.1rem}
-footer a{color:var(--cream-dim);text-decoration:none}
-footer a:hover{color:var(--ember)}
-.flinks{display:flex;flex-wrap:wrap;gap:.6rem 1.3rem}
-.seo-keywords{font-size:.78rem;color:rgba(179,162,142,.65);line-height:1.8;word-break:keep-all}
+footer{background:var(--bg);font-size:.88rem;color:var(--muted);border-top:1px solid var(--line)}
+footer .wrap{padding-block:clamp(56px,8vw,96px) 2.4rem;display:grid;gap:2rem}
+.f-top{display:grid;gap:2rem;grid-template-columns:1fr}
+@media(min-width:860px){.f-top{grid-template-columns:1.3fr 1fr;align-items:end}}
+.f-word{font-family:var(--latin);font-size:clamp(3.4rem,10vw,8.5rem);line-height:.9;letter-spacing:-.04em;color:var(--text)}
+.f-word .it{color:var(--gold)}
+footer a{color:var(--text-2);text-decoration:none;transition:color var(--t-fast)}
+footer a:hover{color:var(--gold)}
+.flinks{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem}
+.flinks a{padding-block:.35rem}
+.f-info{display:flex;flex-wrap:wrap;gap:.3rem 1.4rem;padding-top:1.6rem;border-top:1px solid var(--line)}
+.seo-keywords{font-size:.78rem;color:rgba(163,150,138,.7);line-height:1.9}
+.f-copy{font-size:.78rem;color:rgba(163,150,138,.6)}
 
 /* ── 팝업 ── */
-.pop-backdrop{position:fixed;inset:0;z-index:100;background:rgba(5,3,2,.82);
+.pop-backdrop{position:fixed;inset:0;z-index:100;background:rgba(5,3,2,.8);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
   display:flex;align-items:center;justify-content:center;
-  padding:max(18px,env(safe-area-inset-left,0px)) max(18px,env(safe-area-inset-right,0px));
-  padding-top:max(18px,env(safe-area-inset-top,0px));padding-bottom:max(18px,env(safe-area-inset-bottom,0px));
-  animation:fade .35s ease}
+  padding:max(18px,env(safe-area-inset-top,0px)) max(18px,env(safe-area-inset-right,0px)) max(18px,env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px));
+  animation:fade .35s var(--ease)}
 @keyframes fade{from{opacity:0}to{opacity:1}}
-.pop{position:relative;width:min(430px,100%);max-height:88vh;overflow:auto;
-  background:linear-gradient(170deg,#2a0d14,var(--ink-2) 55%);
-  border:1px solid rgba(240,167,65,.45);box-shadow:0 30px 70px -20px rgba(0,0,0,.9)}
-.pop-img{width:100%;aspect-ratio:16/10;object-fit:cover;opacity:.62;background:#000}
-.pop-body{padding:1.5rem 1.5rem 1.3rem;margin-top:-4.5rem;position:relative}
-.pop .tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.18em;
-  background:var(--ember);color:#231202;padding:.25rem .65rem;border-radius:999px}
-.pop h2{font-size:1.5rem;margin:.75rem 0 .5rem;letter-spacing:-.02em}
-.pop .cnt{font-family:var(--latin);font-size:3.4rem;line-height:1;color:var(--ember);font-weight:600}
-.pop p{color:var(--cream-dim);font-size:.92rem;margin-top:.6rem;word-break:keep-all}
-.pop-times{display:flex;flex-wrap:nowrap;gap:.32rem;margin-top:.9rem;padding:0;list-style:none}
-.pop-times li{flex:1 1 0;min-width:0;text-align:center;font-size:.9rem;font-weight:700;
-  color:var(--ember);font-variant-numeric:tabular-nums;padding:.42rem .15rem;
-  border:1px solid rgba(240,167,65,.45);background:rgba(125,20,36,.3)}
-.pop-note{border-top:1px solid var(--line);margin-top:.95rem;padding-top:.8rem}
-.pop .btn{width:100%;justify-content:center;margin-top:1.2rem}
-.pop-foot{display:flex;align-items:center;justify-content:space-between;gap:1rem;
-  padding:.85rem 1.5rem;border-top:1px solid var(--line);font-size:.83rem;color:var(--cream-dim)}
-.pop-foot label{display:flex;align-items:center;gap:.45rem;cursor:pointer}
-.pop-foot button{background:none;border:none;color:var(--cream-dim);font:inherit;cursor:pointer;padding:.2rem}
-.pop-foot button:hover{color:var(--ember)}
-.pop-x{position:absolute;top:.6rem;right:.6rem;z-index:2;width:34px;height:34px;border-radius:50%;
-  background:rgba(13,9,7,.7);border:1px solid var(--line);color:var(--cream);font-size:1.1rem;
-  line-height:1;cursor:pointer}
-.pop-x:hover{background:var(--wine)}
+.pop{position:relative;width:min(440px,100%);max-height:90vh;overflow:auto;background:var(--surface);border:1px solid var(--line-gold);
+  box-shadow:0 40px 80px -24px rgba(0,0,0,.9);animation:popIn .5s var(--ease)}
+@keyframes popIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.pop-img{width:100%;aspect-ratio:16/10;object-fit:cover;opacity:.7;background:#000}
+.pop-body{padding:1.6rem 1.7rem 1.4rem;margin-top:-4.6rem;position:relative;
+  background:linear-gradient(180deg,transparent 0,var(--surface) 4.6rem)}
+.pop .tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.22em;background:var(--gold);color:var(--gold-ink);padding:.3rem .65rem}
+.pop h2{font-size:1.6rem;font-weight:900;margin:.9rem 0 .6rem;letter-spacing:-.035em;line-height:1.3}
+.pop .cnt{font-family:var(--latin);font-style:italic;font-weight:400;font-size:3.4rem;line-height:1;color:var(--gold);vertical-align:-.1em}
+.pop p{color:var(--text-2);font-size:.94rem;margin-top:.6rem}
+.pop-times{display:flex;gap:.35rem;margin-top:1.1rem}
+.pop-times li{flex:1 1 0;min-width:0;text-align:center;font-family:var(--latin);font-size:1.02rem;color:var(--gold-soft);
+  padding:.55rem .1rem;border:1px solid var(--line-gold)}
+.pop-note{border-top:1px solid var(--line);margin-top:1.1rem;padding-top:.95rem}
+.pop .btn{width:100%;margin-top:1.3rem}
+.pop-foot{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.6rem 1.7rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.pop-foot label{display:flex;align-items:center;gap:.5rem;cursor:pointer;min-height:44px}
+.pop-foot input{accent-color:var(--gold);width:16px;height:16px}
+.pop-foot button{background:none;border:none;color:var(--text-2);cursor:pointer;min-height:44px;padding:0 .4rem}
+.pop-foot button:hover{color:var(--gold)}
+.pop-x{position:absolute;top:.7rem;right:.7rem;z-index:2;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(11,9,8,.7);border:1px solid var(--line-strong);color:var(--text);cursor:pointer;transition:background var(--t-fast)}
+.pop-x:hover{background:var(--wine-2)}
 
 /* ── 플로팅 전화 (모바일) ── */
-.fab{position:fixed;z-index:50;
-  right:calc(16px + env(safe-area-inset-right,0px));
-  bottom:calc(16px + env(safe-area-inset-bottom,0px));
-  display:inline-flex;align-items:center;gap:.5rem;background:var(--ember);color:#231202;
-  text-decoration:none;font-weight:700;font-size:.9rem;padding:.8rem 1.15rem;border-radius:999px;
-  box-shadow:0 12px 30px -8px rgba(0,0,0,.75)}
-@media(min-width:900px){.fab{display:none}}
+.fab{position:fixed;z-index:50;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));
+  display:inline-flex;align-items:center;gap:.55rem;min-height:52px;background:var(--gold);color:var(--gold-ink);text-decoration:none;
+  font-weight:700;font-size:.92rem;padding:.85rem 1.25rem;border-radius:999px;box-shadow:0 14px 34px -10px rgba(0,0,0,.8)}
+@media(min-width:1040px){.fab{display:none}}
 </style>
+<script>document.documentElement.classList.add("js")</script>
 </head>
 
 <body>
 <a class="skip" href="#main">본문 바로가기</a>
 
+<!-- 아이콘 (Lucide 스타일 SVG) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-mute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="m22 9-6 6M16 9l6 6"/></symbol>
+  <symbol id="i-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+</svg>
+
 <!-- ════════ 팝업: 크리스마스 공연 (수정: 날짜/횟수) ════════ -->
 <div class="pop-backdrop" id="xmasPop" role="dialog" aria-modal="true" aria-labelledby="popTitle" hidden>
   <div class="pop">
-    <button class="pop-x" type="button" id="popX" aria-label="팝업 닫기">✕</button>
+    <button class="pop-x" type="button" id="popX" aria-label="팝업 닫기"><svg class="ico" aria-hidden="true"><use href="#i-close"/></svg></button>
     <video class="pop-img" src="pop-live.mp4" poster="pop-live.jpg" autoplay loop muted playsinline preload="auto" aria-label="행2PM8PM 2층 무대에서 진행 중인 라이브 공연 영상"></video>
     <div class="pop-body">
       <span class="tag">CHRISTMAS 2026</span>
@@ -705,7 +827,7 @@ footer a:hover{color:var(--ember)}
         <li>13:00</li><li>15:00</li><li>17:00</li><li>19:00</li><li>21:00</li>
       </ul>
       <p class="pop-note">좌석과 층별 대관 모두 <strong class="hl">선착순으로 마감</strong>됩니다. 연휴 자리는 해마다 일찍 차니 미리 잡아 두세요.</p>
-      <a class="btn btn-primary" href="https://map.naver.com/p/entry/place/1799596430?placePath=%2Fbooking%3FfromPanelNum%3D1%26additionalHeight%3D76%26locale%3Dko%26svcName%3Dmap_pcv5&amp;entry=plt&amp;searchType=place" target="_blank" rel="noopener">네이버 예약으로 자리 잡기</a>
+      <a class="btn btn-primary" href="https://map.naver.com/p/entry/place/1799596430?placePath=%2Fbooking%3FfromPanelNum%3D1%26additionalHeight%3D76%26locale%3Dko%26svcName%3Dmap_pcv5&amp;entry=plt&amp;searchType=place" target="_blank" rel="noopener">네이버 예약으로 자리 잡기 <svg class="ico arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
     <div class="pop-foot">
       <label><input type="checkbox" id="popHide"> 오늘 하루 보지 않기</label>
@@ -715,9 +837,9 @@ footer a:hover{color:var(--ember)}
 </div>
 
 <!-- ════════ 상단 바 ════════ -->
-<header class="topbar">
+<header class="topbar" id="topbar">
   <div class="wrap">
-    <a class="brand" href="#main"><span class="dot" aria-hidden="true"></span>행2PM8PM</a>
+    <a class="brand" href="#main"><b>행2PM8PM</b><small>EULJIRO · LIVE WINE BAR</small></a>
     <nav class="navlinks" aria-label="주요 메뉴">
       <a href="#live">매일 공연</a>
       <a href="#rental">단체 대관</a>
@@ -726,7 +848,7 @@ footer a:hover{color:var(--ember)}
       <a href="#location">오시는 길</a>
       <a href="#faq">자주 묻는 질문</a>
     </nav>
-    <a class="topcall" href="tel:+821053646915">대관문의 010-5364-6915</a>
+    <a class="topcall" href="tel:+821053646915"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg><span class="t-long">대관문의 010-5364-6915</span><span class="t-short">대관문의</span></a>
   </div>
 </header>
 
@@ -741,32 +863,47 @@ footer a:hover{color:var(--ember)}
     </picture>
   </div>
   <div class="wrap">
-    <div class="badge-row">
-      <span class="badge">365일 연중무휴</span>
-      <span class="badge">1~3층 통건물</span>
-      <span class="badge">대관료 0원</span>
-      <span class="badge">SK 최태원 회장 방문</span>
+    <div>
+      <p class="hero-eyebrow">Euljiro Live Wine Bar &mdash; since 2PM</p>
+      <h1 id="h1">매일 밤 공연이 있는<span class="line2">을지로 통건물 와인바</span></h1>
+      <p class="hero-sub js-speakable">1층 홀부터 2층 공연장, 3층 루프탑까지. 을지로에서 건물 세 개 층을 통째로 쓰는 유일한 대형 와인바 <strong>행2PM8PM</strong>입니다. 365일 매일 무료 라이브 공연이 열리고, 10명부터 100명까지 층별 통대관이 가능합니다.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://map.naver.com/p/entry/place/1799596430?placePath=%2Fbooking%3FfromPanelNum%3D1%26additionalHeight%3D76%26locale%3Dko%26svcName%3Dmap_pcv5&amp;entry=plt&amp;searchType=place" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg>네이버 예약하기</a>
+        <a class="btn btn-ghost" href="tel:+821053646915"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>단체 대관 문의 &middot; 24시간</a>
+      </div>
+      <div class="badge-row">
+        <span class="badge">365일 연중무휴</span>
+        <span class="badge">1~3층 통건물</span>
+        <span class="badge">대관료 0원</span>
+        <span class="badge">SK 최태원 회장 방문</span>
+      </div>
     </div>
-    <p class="eyebrow">Euljiro Live Wine Bar &middot; since 2PM</p>
-    <h1 id="h1">매일 밤 공연이 있는<span class="line2">을지로 통건물 와인바</span></h1>
-    <p class="hero-sub js-speakable">1층 홀부터 2층 공연장, 3층 루프탑까지. 을지로에서 건물 세 개 층을 통째로 쓰는 유일한 대형 와인바 <strong>행2PM8PM</strong>입니다. 365일 매일 무료 라이브 공연이 열리고, 10명부터 100명까지 층별 통대관이 가능합니다.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="https://map.naver.com/p/entry/place/1799596430?placePath=%2Fbooking%3FfromPanelNum%3D1%26additionalHeight%3D76%26locale%3Dko%26svcName%3Dmap_pcv5&amp;entry=plt&amp;searchType=place" target="_blank" rel="noopener">네이버 예약하기</a>
-      <a class="btn btn-ghost" href="tel:+821053646915">단체 대관 문의 &middot; 24시간</a>
-    </div>
+    <nav class="floor-index" aria-label="층별 안내">
+      <a href="#rental"><span class="fi-no">3F</span><span class="fi-nm">루프탑</span><span class="fi-cap">실내 20명</span></a>
+      <a href="#rental"><span class="fi-no">2F</span><span class="fi-nm">공연장</span><span class="fi-cap">15–75명</span></a>
+      <a href="#rental"><span class="fi-no">1F</span><span class="fi-nm">홀 · 바</span><span class="fi-cap">20명</span></a>
+    </nav>
   </div>
+  <span class="scroll-cue" aria-hidden="true"></span>
 </section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Live every night</span><span>365일 무료 공연</span><span>Private rental · 10–100</span><span>대관료 0원</span><span>Rooftop in Euljiro</span><span>Wine &amp; Highball</span>
+    <span>Live every night</span><span>365일 무료 공연</span><span>Private rental · 10–100</span><span>대관료 0원</span><span>Rooftop in Euljiro</span><span>Wine &amp; Highball</span>
+  </div>
+</div>
 
 <!-- ════════ 한눈에 보는 정보 (AI 검색 · 음성 검색 답변 블록) ════════ -->
 <section class="facts" aria-label="행2PM8PM 기본 정보 요약">
   <div class="wrap">
     <dl class="facts-grid js-speakable">
-      <div class="fact"><dt>위치</dt><dd>서울 중구 수표로12길 10<small>을지로3가역 도보 8분 · 1~3층 전체</small></dd></div>
-      <div class="fact"><dt>영업시간</dt><dd class="num">일~금 17:00–23:00<small class="num">토 16:00–24:00 · 365일 연중무휴</small></dd></div>
-      <div class="fact"><dt>공연</dt><dd>매일 라이브 · 관람료 없음<small>재즈 보컬 &amp; 국내 인디 뮤지션</small></dd></div>
-      <div class="fact"><dt>단체 대관</dt><dd class="num">10명 ~ 100명<small>층별 통대관 · 대관료 0원</small></dd></div>
-      <div class="fact"><dt>대표 메뉴</dt><dd>오리한판 몽둥이고기<small class="num">23,000원 · 누적 5만 개 판매</small></dd></div>
-      <div class="fact"><dt>문의</dt><dd><a href="tel:+821053646915" style="text-decoration:none;color:var(--ember)" class="num">010-5364-6915</a><small>365일 24시간 전화 상담</small></dd></div>
+      <div class="fact rv" data-n="i."><dt>위치</dt><dd>서울 중구 수표로12길 10<small>을지로3가역 도보 8분 · 1~3층 전체</small></dd></div>
+      <div class="fact rv d1" data-n="ii."><dt>영업시간</dt><dd class="num">일~금 17:00–23:00<small class="num">토 16:00–24:00 · 365일 연중무휴</small></dd></div>
+      <div class="fact rv d2" data-n="iii."><dt>공연</dt><dd>매일 라이브 · 관람료 없음<small>재즈 보컬 &amp; 국내 인디 뮤지션</small></dd></div>
+      <div class="fact rv" data-n="iv."><dt>단체 대관</dt><dd class="num">10명 ~ 100명<small>층별 통대관 · 대관료 0원</small></dd></div>
+      <div class="fact rv d1" data-n="v."><dt>대표 메뉴</dt><dd>오리한판 몽둥이고기<small class="num">23,000원 · 누적 5만 개 판매</small></dd></div>
+      <div class="fact rv d2" data-n="vi."><dt>문의</dt><dd><a href="tel:+821053646915" class="num">010-5364-6915</a><small>365일 24시간 전화 상담</small></dd></div>
     </dl>
   </div>
 </section>
@@ -775,44 +912,51 @@ footer a:hover{color:var(--ember)}
 <section class="band" id="live" aria-labelledby="h-live">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker">Every Night, Live</span>
-      <h2 class="h2" id="h-live">쉬는 날 없이, 365일 매일 공연합니다</h2>
-      <p class="lead">외국 재즈 보컬과 국내 인디 뮤지션이 번갈아 2층 무대에 오릅니다. 공연 관람료도, 입장료도 받지 않습니다. 와인 한 잔 시켜 두고 바로 앞에서 라이브를 듣는 것이 행2PM8PM에서 가장 흔한 저녁 풍경입니다.</p>
-      <p class="lead" style="margin-top:.8rem">단체 손님만 오시는 곳은 아닙니다. 연인끼리 데이트로 오셔서 공연 보시는 분들이 많고, 혼자 와서 와인이나 하이볼 한 잔 놓고 무대를 보다 가시는 분들도 꾸준히 예약하십니다. 혼자 앉기 편한 자리가 따로 있으니 예약하실 때 말씀해 주세요.</p>
+      <div class="sec-index rv"><span class="sec-no" aria-hidden="true">01</span><span class="label">Every Night, Live</span></div>
+      <div class="sec-body rv d1">
+        <h2 class="h2" id="h-live">쉬는 날 없이,<br><em>365일 매일</em> 공연합니다</h2>
+        <p class="lead">외국 재즈 보컬과 국내 인디 뮤지션이 번갈아 2층 무대에 오릅니다. 공연 관람료도, 입장료도 받지 않습니다. 와인 한 잔 시켜 두고 바로 앞에서 라이브를 듣는 것이 행2PM8PM에서 가장 흔한 저녁 풍경입니다.</p>
+        <p class="lead">단체 손님만 오시는 곳은 아닙니다. 연인끼리 데이트로 오셔서 공연 보시는 분들이 많고, 혼자 와서 와인이나 하이볼 한 잔 놓고 무대를 보다 가시는 분들도 꾸준히 예약하십니다. 혼자 앉기 편한 자리가 따로 있으니 예약하실 때 말씀해 주세요.</p>
+        <ul class="usecases" style="margin-top:2rem">
+          <li class="usecase">연인 데이트</li>
+          <li class="usecase">혼술 &amp; 공연 관람</li>
+          <li class="usecase">기념일 · 프러포즈</li>
+          <li class="usecase">친구 모임</li>
+          <li class="usecase">퇴근 후 한잔</li>
+        </ul>
+      </div>
     </div>
 
-    <ul class="usecases" style="margin-bottom:1.6rem">
-      <li class="usecase">연인 데이트</li>
-      <li class="usecase">혼술 &amp; 공연 관람</li>
-      <li class="usecase">기념일 · 프러포즈</li>
-      <li class="usecase">친구 모임</li>
-      <li class="usecase">퇴근 후 한잔</li>
-    </ul>
-
-    <div class="schedule" role="list" aria-label="요일별 공연 시작 시간">
-      <div class="slot" role="listitem" data-day="1,2,3,4"><span class="day">월 · 화 · 수 · 목</span><span class="time num">20:00<small>1회</small></span></div>
-      <div class="slot" role="listitem" data-day="5"><span class="day">금요일 1부</span><span class="time num">19:30<small>1부</small></span></div>
-      <div class="slot" role="listitem" data-day="5"><span class="day">금요일 2부</span><span class="time num">21:00<small>2부</small></span></div>
-      <div class="slot" role="listitem" data-day="6"><span class="day">토요일 1부</span><span class="time num">19:00<small>1부</small></span></div>
-      <div class="slot" role="listitem" data-day="6"><span class="day">토요일 2부</span><span class="time num">21:00<small>2부</small></span></div>
-      <div class="slot" role="listitem" data-day="0"><span class="day">일요일</span><span class="time num">19:00<small>1회</small></span></div>
+    <div class="program rv" role="list" aria-label="요일별 공연 시작 시간">
+      <div class="slot" role="listitem" data-day="1,2,3,4"><span class="part">Weekday</span><span class="day">월 · 화 · 수 · 목</span><span class="time num">20:00</span></div>
+      <div class="slot" role="listitem" data-day="5"><span class="part">Friday · I</span><span class="day">금요일 1부</span><span class="time num">19:30</span></div>
+      <div class="slot" role="listitem" data-day="5"><span class="part">Friday · II</span><span class="day">금요일 2부</span><span class="time num">21:00</span></div>
+      <div class="slot" role="listitem" data-day="6"><span class="part">Saturday · I</span><span class="day">토요일 1부</span><span class="time num">19:00</span></div>
+      <div class="slot" role="listitem" data-day="6"><span class="part">Saturday · II</span><span class="day">토요일 2부</span><span class="time num">21:00</span></div>
+      <div class="slot" role="listitem" data-day="0"><span class="part">Sunday</span><span class="day">일요일</span><span class="time num">19:00</span></div>
     </div>
 
-    <div class="reels" style="margin-top:1.8rem">
-      <div class="reel">
-        <video src="reel-guest-review.mp4" poster="reel-guest-review.jpg" controls autoplay loop muted playsinline preload="metadata" title="손님이 남긴 행2PM8PM 후기 영상"></video>
-        <button class="soundbtn" type="button" aria-pressed="false">🔇 소리 켜기</button>
-        <p class="cap">손님이 올려주신 후기 — “매일 라이브공연을 하는데 금요일은 벨기에 가수분이 오셔요”</p>
+    <div class="reels">
+      <div class="reel rv">
+        <div class="reel-frame">
+          <video src="reel-guest-review.mp4" poster="reel-guest-review.jpg" controls autoplay loop muted playsinline preload="metadata" title="손님이 남긴 행2PM8PM 후기 영상"></video>
+          <button class="soundbtn" type="button" aria-pressed="false"><svg class="ico off" aria-hidden="true"><use href="#i-mute"/></svg><svg class="ico on" aria-hidden="true"><use href="#i-sound"/></svg><span class="sb-t">소리 켜기</span></button>
+        </div>
+        <p class="cap"><b>Guest review</b>손님이 올려주신 후기 — “매일 라이브공연을 하는데 금요일은 벨기에 가수분이 오셔요”</p>
       </div>
-      <div class="reel">
-        <video src="reel-platter-live.mp4" poster="reel-platter-live.jpg" controls autoplay loop muted playsinline preload="metadata" title="하루 두 번 공연이 있는 곳"></video>
-        <button class="soundbtn" type="button" aria-pressed="false">🔇 소리 켜기</button>
-        <p class="cap">하루 두 번 무대가 열리는 날 — 와인과 행플레이터</p>
+      <div class="reel rv d1">
+        <div class="reel-frame">
+          <video src="reel-platter-live.mp4" poster="reel-platter-live.jpg" controls autoplay loop muted playsinline preload="metadata" title="하루 두 번 공연이 있는 곳"></video>
+          <button class="soundbtn" type="button" aria-pressed="false"><svg class="ico off" aria-hidden="true"><use href="#i-mute"/></svg><svg class="ico on" aria-hidden="true"><use href="#i-sound"/></svg><span class="sb-t">소리 켜기</span></button>
+        </div>
+        <p class="cap"><b>Two stages a day</b>하루 두 번 무대가 열리는 날 — 와인과 행플레이터</p>
       </div>
-      <div class="reel">
-        <video src="reel-chey-rental.mp4" poster="reel-chey-rental.jpg" controls autoplay loop muted playsinline preload="metadata" title="대관료 0원 단체 대관 안내"></video>
-        <button class="soundbtn" type="button" aria-pressed="false">🔇 소리 켜기</button>
-        <p class="cap">벽에 걸린 친필 사인, 그리고 대관료 0원 단체 대관</p>
+      <div class="reel rv d2">
+        <div class="reel-frame">
+          <video src="reel-chey-rental.mp4" poster="reel-chey-rental.jpg" controls autoplay loop muted playsinline preload="metadata" title="대관료 0원 단체 대관 안내"></video>
+          <button class="soundbtn" type="button" aria-pressed="false"><svg class="ico off" aria-hidden="true"><use href="#i-mute"/></svg><svg class="ico on" aria-hidden="true"><use href="#i-sound"/></svg><span class="sb-t">소리 켜기</span></button>
+        </div>
+        <p class="cap"><b>Private rental</b>벽에 걸린 친필 사인, 그리고 대관료 0원 단체 대관</p>
       </div>
     </div>
   </div>
@@ -822,20 +966,21 @@ footer a:hover{color:var(--ember)}
 <section class="vip band" id="vip" aria-labelledby="h-vip">
   <div class="wrap">
     <div class="vip-grid">
-      <div>
-        <span class="kicker">2026. 10. 21 방문</span>
+      <div class="vip-text rv">
+        <span class="label">Notable Guest · 2026. 10. 21 방문</span>
         <h2 class="h2" id="h-vip">SK 최태원 회장이<br>두 시간을 보내고 간 을지로 맛집</h2>
         <p class="quote">“대박나세요!”</p>
         <p class="lead">2026년 10월 21일 밤, SK그룹 최태원 회장이 행2PM8PM을 찾아 약 두 시간 동안 식사하고 가셨습니다. 돌아가시며 남긴 친필 사인은 액자에 넣어 1층 벽에 걸어 두었고, 앉으셨던 루프탑 자리는 그날 그대로 두었습니다. MBN 「더 펀치」가 이 방문을 ‘3차 회식 장소’로 소개하며 저희 가게를 보도하기도 했습니다.</p>
-        <p class="lead" style="margin-top:.9rem">오셔서 사인 액자 앞에서 사진 찍고 가시는 분들이 많습니다. 루프탑 그 자리에 앉아보고 싶으시면 예약하실 때 말씀해 주세요.</p>
+        <p class="lead">오셔서 사인 액자 앞에서 사진 찍고 가시는 분들이 많습니다. 루프탑 그 자리에 앉아보고 싶으시면 예약하실 때 말씀해 주세요.</p>
+        <div class="vip-meta"><span><b>보도</b>MBN 「더 펀치」</span><span><b>사인 액자</b>1층 벽</span><span><b>보존 좌석</b>3층 루프탑</span></div>
       </div>
       <div class="vip-imgs">
-        <figure>
+        <figure class="rv d1">
           <picture><source srcset="chey-signature.webp" type="image/webp">
           <img src="chey-signature.jpg" alt="행2PM8PM 2PM 8PM이라 적힌 종이에 남긴 ‘대박나세요!’ 친필 사인" loading="lazy" width="1100" height="1467"></picture>
           <figcaption>‘행2PM. 8PM. 대박나세요!’ — 현재 1층 벽에 액자로 걸려 있습니다</figcaption>
         </figure>
-        <figure>
+        <figure class="rv d2">
           <picture><source srcset="chey-signing.webp" type="image/webp">
           <img src="chey-signing.jpg" alt="행2PM8PM 테이블에서 사인을 쓰고 있는 최태원 회장" loading="lazy" width="1100" height="1550"></picture>
           <figcaption>방문 당일, 가게 테이블에서 직접 사인을 남기는 모습</figcaption>
@@ -849,54 +994,58 @@ footer a:hover{color:var(--ember)}
 <section class="band" id="rental" aria-labelledby="h-rental">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker">Private Rental</span>
-      <h2 class="h2" id="h-rental">대관료도, 최소주문금액도 받지 않습니다</h2>
-      <p class="lead js-speakable">을지로에서 1층부터 3층까지 통건물을 쓰는 술집은 저희가 유일합니다. 그래서 인원에 맞춰 한 층을 통째로 비워 드릴 수 있습니다. 10명이든 100명이든, 대관료 0원 · 최소주문금액 0원으로 드신 만큼만 계산하시면 됩니다.</p>
+      <div class="sec-index rv"><span class="sec-no" aria-hidden="true">02</span><span class="label">Private Rental</span></div>
+      <div class="sec-body rv d1">
+        <h2 class="h2" id="h-rental">대관료도, 최소주문금액도<br><em>받지 않습니다</em></h2>
+        <p class="lead js-speakable">을지로에서 1층부터 3층까지 통건물을 쓰는 술집은 저희가 유일합니다. 그래서 인원에 맞춰 한 층을 통째로 비워 드릴 수 있습니다. 10명이든 100명이든, 대관료 0원 · 최소주문금액 0원으로 드신 만큼만 계산하시면 됩니다.</p>
+      </div>
     </div>
 
     <div class="perks">
-      <div class="perk">
-        <div class="big num">0원</div>
+      <div class="perk rv">
+        <div class="big num">₩0</div>
         <h3>대관료가 없습니다</h3>
         <p>층을 통째로 빌려도 공간 사용료를 따로 받지 않습니다.</p>
       </div>
-      <div class="perk">
-        <div class="big num">0원</div>
+      <div class="perk rv d1">
+        <div class="big num">₩0</div>
         <h3>최소주문금액이 없습니다</h3>
         <p>“몇 만 원 이상 드셔야 한다”는 조건 없이, 드신 만큼만 결제하시면 됩니다.</p>
       </div>
-      <div class="perk">
-        <div class="big">무료</div>
+      <div class="perk rv d2">
+        <div class="big ko">무료</div>
         <h3>대관팀 전용 공연</h3>
         <p>우리 팀만을 위한 라이브 무대를 추가 비용 없이 올려 드립니다. 축하 순서도 맞춰 드립니다.</p>
       </div>
     </div>
 
-    <h3 class="h3" style="margin:2.6rem 0 1rem">1~3층, 층별 프라이빗 대관</h3>
+    <div class="floors-head rv">
+      <h3 class="h3">1~3층, 층별 프라이빗 대관</h3>
+      <p>최대 100명 · 층 단위 단독 사용</p>
+    </div>
     <div class="floors">
-      <article class="floor">
-        <span class="fl">1F</span>
-        <h3>홀</h3>
-        <p>단체석과 바 좌석으로 나뉘어 있습니다. 브릭 벽과 백열등 조명 아래 최태원 회장 사인 액자가 걸려 있는 층이고, 혼자 오시면 바 좌석이 편합니다.</p>
-        <span class="cap">20명 · 단체석 + 바 좌석</span>
-      </article>
-      <article class="floor is-best">
-        <span class="floor-badge">가장 많이 찾으시는 층</span>
-        <span class="fl">2F</span>
-        <h3>공연장</h3>
-        <p>매일 라이브가 열리는 무대를 그대로 쓰실 수 있습니다. 대관팀만을 위한 공연도 무료로 올려 드려서, 축사·축가·시상 같은 순서가 있는 모임에 가장 많이 나가는 층입니다.</p>
-        <span class="cap">15 – 75명 · 무대 이용 가능</span>
-      </article>
-      <article class="floor">
+      <article class="floor rv">
         <span class="fl">3F</span>
-        <h3>루프탑</h3>
+        <h3>루프탑<small>Rooftop</small></h3>
         <p>실내와 실외가 나뉘어 있습니다. 실내는 난방 에어컨과 담요를 갖춰 겨울에도 따뜻하게 쓰실 수 있고 20명까지 들어갑니다. 실외는 초가 처마에 전구를 달아 을지로 야경을 보며 마시는 자리입니다.</p>
         <span class="cap">실내 20명 · 실내외 구분</span>
       </article>
+      <article class="floor is-best rv">
+        <span class="fl">2F</span>
+        <h3><span class="floor-badge">가장 많이 찾으시는 층</span><br>공연장<small>Live Stage</small></h3>
+        <p>매일 라이브가 열리는 무대를 그대로 쓰실 수 있습니다. 대관팀만을 위한 공연도 무료로 올려 드려서, 축사·축가·시상 같은 순서가 있는 모임에 가장 많이 나가는 층입니다.</p>
+        <span class="cap">15 – 75명 · 무대 이용 가능</span>
+      </article>
+      <article class="floor rv">
+        <span class="fl">1F</span>
+        <h3>홀<small>Hall &amp; Bar</small></h3>
+        <p>단체석과 바 좌석으로 나뉘어 있습니다. 브릭 벽과 백열등 조명 아래 최태원 회장 사인 액자가 걸려 있는 층이고, 혼자 오시면 바 좌석이 편합니다.</p>
+        <span class="cap">20명 · 단체석 + 바 좌석</span>
+      </article>
     </div>
-    <p class="lead" style="margin-top:1rem;font-size:.92rem">세 개 층을 모두 쓰시면 최대 100명까지 수용합니다. 15~20명 규모여도 한 층을 단독으로 쓰실 수 있습니다. 날이 추워지는 계절에는 무대를 쓸 수 있는 <strong class="hl">2층 공연장</strong>을 가장 많이 찾으십니다.</p>
+    <p class="floors-note">세 개 층을 모두 쓰시면 최대 100명까지 수용합니다. 15~20명 규모여도 한 층을 단독으로 쓰실 수 있습니다. 날이 추워지는 계절에는 무대를 쓸 수 있는 <strong class="hl">2층 공연장</strong>을 가장 많이 찾으십니다.</p>
 
-    <h3 class="h3" style="margin:2.6rem 0 .4rem">이런 모임을 많이 하십니다</h3>
+    <h3 class="h3 sub-h">이런 모임을 많이 하십니다</h3>
     <ul class="usecases">
       <li class="usecase">회사 단체 회식</li>
       <li class="usecase">결혼식 뒷풀이</li>
@@ -909,54 +1058,56 @@ footer a:hover{color:var(--ember)}
       <li class="usecase">대학 동문회</li>
     </ul>
 
-    <div class="gallery" style="margin-top:2rem">
-      <figure class="tall">
+    <div class="gallery">
+      <figure class="tall rv">
         <picture><source srcset="indoor-group.webp" type="image/webp">
         <img src="indoor-group.jpg" alt="그래피티 벽 앞에서 단체로 모여 있는 실내 프라이빗 홀 손님들" loading="lazy" width="1600" height="1200"></picture>
         <figcaption>실내 프라이빗 홀 단독 대관</figcaption>
       </figure>
-      <figure>
+      <figure class="wide rv d1">
         <picture><source srcset="hoesik-rooftop.webp" type="image/webp">
         <img src="hoesik-rooftop.jpg" alt="행2PM8PM 3층 루프탑에서 기타 라이브와 함께 건배하는 회사 단체 회식" loading="lazy" width="1600" height="1069"></picture>
         <figcaption>3층 루프탑 단체 회식 — 기타 라이브와 함께</figcaption>
       </figure>
-      <figure>
+      <figure class="wide rv d2">
         <picture><source srcset="rooftop-group.webp" type="image/webp">
-        <img src="rooftop-group.jpg" alt="루프탑 초가 처마와 전구 아래에서 와인잔을 들고 건배하는 단체 손님들" loading="lazy" width="1600" height="2074"></picture>
+        <img src="rooftop-group.jpg" alt="루프탑 초가 처마와 전구 아래에서 와인잔을 들고 건배하는 단체 손님들" loading="lazy" width="1600" height="2074" style="object-position:center 35%"></picture>
         <figcaption>루프탑 단체석 20인 이상</figcaption>
       </figure>
     </div>
 
     <div class="cta-row">
-      <a class="btn btn-primary" href="tel:+821053646915">대관 문의 010-5364-6915</a>
-      <a class="btn btn-ghost" href="https://www.instagram.com/hang_2pm8pm" target="_blank" rel="noopener">인스타그램 DM 문의</a>
+      <a class="btn btn-primary" href="tel:+821053646915"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>대관 문의 010-5364-6915</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/hang_2pm8pm" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-ig"/></svg>인스타그램 DM 문의</a>
     </div>
   </div>
 </section>
 
 <!-- ════════ 메뉴 ════════ -->
-<section class="band" id="menu" aria-labelledby="h-menu" style="background:var(--ink-2);border-block:1px solid var(--line)">
+<section class="band band--alt" id="menu" aria-labelledby="h-menu">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker">Food &amp; Wine</span>
-      <h2 class="h2" id="h-menu">메뉴</h2>
-      <p class="lead">와인에 맞춘 안주들입니다. 오리 다리를 통째로 구운 몽둥이고기가 대표 메뉴이고, 2차·3차로 자리를 옮기지 않아도 되게끔 플레이터 구성을 크게 잡았습니다.</p>
+      <div class="sec-index rv"><span class="sec-no" aria-hidden="true">03</span><span class="label">Food &amp; Wine</span></div>
+      <div class="sec-body rv d1">
+        <h2 class="h2" id="h-menu">메뉴</h2>
+        <p class="lead">와인에 맞춘 안주들입니다. 오리 다리를 통째로 구운 몽둥이고기가 대표 메뉴이고, 2차·3차로 자리를 옮기지 않아도 되게끔 플레이터 구성을 크게 잡았습니다.</p>
+      </div>
     </div>
 
     <div class="sig">
-      <figure>
-        <picture><source srcset="mongdungi-duck.webp" type="image/webp">
-        <img src="mongdungi-duck.jpg" alt="숯향 소스에 구워 머스터드를 뿌린 행2PM8PM 오리한판 몽둥이고기" loading="lazy" width="1400" height="1375"></picture>
+      <figure class="rv">
+        <span class="ph"><picture><source srcset="mongdungi-duck.webp" type="image/webp">
+        <img src="mongdungi-duck.jpg" alt="숯향 소스에 구워 머스터드를 뿌린 행2PM8PM 오리한판 몽둥이고기" loading="lazy" width="1400" height="1375"></picture></span>
         <figcaption>
-          <span class="tag">누적 5만 개 돌파</span>
+          <span class="tag">SIGNATURE · 누적 5만 개 돌파</span>
           <span class="nm">오리한판 몽둥이고기</span>
           <span class="ds">통오리 다리를 소스에 구워 한 판에 담아냅니다. 오픈 때부터 지금까지 가장 많이 나간 메뉴입니다.</span>
           <span class="pr num">23,000원</span>
         </figcaption>
       </figure>
-      <figure>
-        <picture><source srcset="platter-poster.webp" type="image/webp">
-        <img src="platter-poster.jpg" alt="하몽과 살라미, 치즈, 견과류를 담은 행플레이터와 수제 하이볼" loading="lazy" width="692" height="864"></picture>
+      <figure class="rv d1">
+        <span class="ph"><picture><source srcset="platter-poster.webp" type="image/webp">
+        <img src="platter-poster.jpg" alt="하몽과 살라미, 치즈, 견과류를 담은 행플레이터와 수제 하이볼" loading="lazy" width="692" height="864"></picture></span>
         <figcaption>
           <span class="tag">BEST</span>
           <span class="nm">행플레이터</span>
@@ -964,47 +1115,49 @@ footer a:hover{color:var(--ember)}
           <span class="pr num">24,500원</span>
         </figcaption>
       </figure>
-      <figure>
-        <a href="menu-board.jpg" target="_blank" rel="noopener" aria-label="행2PM8PM 전체 메뉴판 크게 보기">
+      <figure class="rv d2">
+        <a class="ph" href="menu-board.jpg" target="_blank" rel="noopener" aria-label="행2PM8PM 전체 메뉴판 크게 보기">
         <picture><source srcset="menu-board.webp" type="image/webp">
         <img src="menu-board.jpg" alt="행2PM8PM 전체 메뉴판 — 세트 할인, 메인, 사이드 가격표" loading="lazy" width="1400" height="1996"></picture></a>
         <figcaption>
           <span class="tag">MENU</span>
           <span class="nm">전체 메뉴판</span>
           <span class="ds">세트 할인과 메인 · 사이드 전체 가격입니다. 매장 메뉴판 그대로입니다.</span>
-          <span class="pr" style="font-size:.9rem;font-family:var(--body)">이미지를 눌러 크게 보기</span>
+          <span class="pr txt">이미지를 눌러 크게 보기</span>
         </figcaption>
       </figure>
     </div>
 
-    <div class="setbox">
-      <h3>SET 할인 — 단품보다 항상 이득입니다</h3>
-      <div class="setrow"><strong>2인 추천 SET</strong> <span>몽둥이고기 + 행플레이터</span> <span class="disc num">2,000원 할인</span></div>
-      <div class="setrow"><strong>3~4인 SET</strong> <span>몽둥이고기 + 라자냐 + 행플레이터</span> <span class="disc num">3,000원 할인</span></div>
+    <div class="setbox rv">
+      <h3><small>Set Menu</small>SET 할인 — 단품보다 항상 이득입니다</h3>
+      <div>
+        <div class="setrow"><strong>2인 추천 SET</strong> <span>몽둥이고기 + 행플레이터</span> <span class="disc num">2,000원 할인</span></div>
+        <div class="setrow"><strong>3~4인 SET</strong> <span>몽둥이고기 + 라자냐 + 행플레이터</span> <span class="disc num">3,000원 할인</span></div>
+      </div>
     </div>
 
     <div class="menucols">
-      <div class="mlist">
+      <div class="mlist rv">
         <h3>Main <span>메인 요리</span></h3>
-        <div class="mrow"><span class="nm"><span class="best">BEST</span>오리한판 몽둥이고기</span><span class="pr num">23,000<i>원</i></span></div>
-        <div class="mrow"><span class="nm"><span class="best">BEST</span>행플레이터 <em>치즈 + 하몽 + 과일</em></span><span class="pr num">24,500<i>원</i></span></div>
-        <div class="mrow"><span class="nm"><span class="best">BEST</span>이탈리아 라자냐 파스타</span><span class="pr num">18,000<i>원</i></span></div>
-        <div class="mrow"><span class="nm">모듬만두플레이터</span><span class="pr num">18,500<i>원</i></span></div>
-        <div class="mrow"><span class="nm">구운치즈 <em>까망베르 + 견과류</em></span><span class="pr num">18,500<i>원</i></span></div>
-        <div class="mrow"><span class="nm">버팔로윙봉과 나초</span><span class="pr num">17,500<i>원</i></span></div>
-        <div class="mrow"><span class="nm">스모어딥</span><span class="pr num">16,500<i>원</i></span></div>
+        <div class="mrow"><span class="nm"><span class="best">BEST</span>오리한판 몽둥이고기</span><span class="lead-dots" aria-hidden="true"></span><span class="pr num">23,000<i>원</i></span></div>
+        <div class="mrow"><span class="nm"><span class="best">BEST</span>행플레이터 <em>치즈 + 하몽 + 과일</em></span><span class="lead-dots" aria-hidden="true"></span><span class="pr num">24,500<i>원</i></span></div>
+        <div class="mrow"><span class="nm"><span class="best">BEST</span>이탈리아 라자냐 파스타</span><span class="lead-dots" aria-hidden="true"></span><span class="pr num">18,000<i>원</i></span></div>
+        <div class="mrow"><span class="nm">모듬만두플레이터</span><span class="lead-dots" aria-hidden="true"></span><span class="pr num">18,500<i>원</i></span></div>
+        <div class="mrow"><span class="nm">구운치즈 <em>까망베르 + 견과류</em></span><span class="lead-dots" aria-hidden="true"></span><span class="pr num">18,500<i>원</i></span></div>
+        <div class="mrow"><span class="nm">버팔로윙봉과 나초</span><span class="lead-dots" aria-hidden="true"></span><span class="pr num">17,500<i>원</i></span></div>
+        <div class="mrow"><span class="nm">스모어딥</span><span class="lead-dots" aria-hidden="true"></span><span class="pr num">16,500<i>원</i></span></div>
       </div>
-      <div class="mlist">
+      <div class="mlist rv d1">
         <h3>Side <span>메인 메뉴 주문 시에만 주문 가능</span></h3>
-        <div class="mrow"><span class="nm">먹태와 견과류</span><span class="pr num">12,000<i>원</i></span></div>
-        <div class="mrow"><span class="nm">치즈폭탄 감자튀김</span><span class="pr num">10,500<i>원</i></span></div>
-        <div class="mrow"><span class="nm">나초 앤 치즈소스</span><span class="pr num">8,500<i>원</i></span></div>
-        <div class="mrow"><span class="nm">트러플오일 짜파게티</span><span class="pr num">8,000<i>원</i></span></div>
-        <div class="mrow"><span class="nm">젤라또 앤 초코소스</span><span class="pr num">8,000<i>원</i></span></div>
-        <div class="mrow"><span class="nm">올리브 앤 크래커</span><span class="pr num">7,000<i>원</i></span></div>
-        <div class="mrow"><span class="nm">김부각 앤 얼린망고</span><span class="pr num">7,000<i>원</i></span></div>
-        <div class="mrow"><span class="nm">랜덤컵라면</span><span class="pr num">5,000<i>원</i></span></div>
-        <div class="mrow"><span class="nm">탄산수</span><span class="pr num">5,000<i>원</i></span></div>
+        <div class="mrow"><span class="nm">먹태와 견과류</span><span class="lead-dots" aria-hidden="true"></span><span class="pr num">12,000<i>원</i></span></div>
+        <div class="mrow"><span class="nm">치즈폭탄 감자튀김</span><span class="lead-dots" aria-hidden="true"></span><span class="pr num">10,500<i>원</i></span></div>
+        <div class="mrow"><span class="nm">나초 앤 치즈소스</span><span class="lead-dots" aria-hidden="true"></span><span class="pr num">8,500<i>원</i></span></div>
+        <div class="mrow"><span class="nm">트러플오일 짜파게티</span><span class="lead-dots" aria-hidden="true"></span><span class="pr num">8,000<i>원</i></span></div>
+        <div class="mrow"><span class="nm">젤라또 앤 초코소스</span><span class="lead-dots" aria-hidden="true"></span><span class="pr num">8,000<i>원</i></span></div>
+        <div class="mrow"><span class="nm">올리브 앤 크래커</span><span class="lead-dots" aria-hidden="true"></span><span class="pr num">7,000<i>원</i></span></div>
+        <div class="mrow"><span class="nm">김부각 앤 얼린망고</span><span class="lead-dots" aria-hidden="true"></span><span class="pr num">7,000<i>원</i></span></div>
+        <div class="mrow"><span class="nm">랜덤컵라면</span><span class="lead-dots" aria-hidden="true"></span><span class="pr num">5,000<i>원</i></span></div>
+        <div class="mrow"><span class="nm">탄산수</span><span class="lead-dots" aria-hidden="true"></span><span class="pr num">5,000<i>원</i></span></div>
       </div>
     </div>
     <p class="notice">와인 · 칵테일 · 수제 하이볼 · 생맥주를 함께 준비하고 있습니다. 콜키지 병당 30,000원 / 잔 파손 시 10,000원. 가격은 변동될 수 있으니 방문 전 확인 부탁드립니다.</p>
@@ -1015,32 +1168,34 @@ footer a:hover{color:var(--ember)}
 <section class="band" id="location" aria-labelledby="h-loc">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker">Visit</span>
-      <h2 class="h2" id="h-loc">오시는 길 &amp; 매장 정보</h2>
+      <div class="sec-index rv"><span class="sec-no" aria-hidden="true">04</span><span class="label">Visit</span></div>
+      <div class="sec-body rv d1">
+        <h2 class="h2" id="h-loc">오시는 길 &amp; 매장 정보</h2>
+      </div>
     </div>
     <div class="loc-grid">
-      <dl class="infolist js-speakable">
+      <dl class="infolist js-speakable rv">
         <div class="inforow"><dt>주소</dt><dd>서울특별시 중구 수표로12길 10, 1~3층
           <button class="copybtn" type="button" data-copy="서울특별시 중구 수표로12길 10">주소 복사</button>
           <small>건물 1층부터 3층까지 전체가 행2PM8PM입니다</small></dd></div>
         <div class="inforow"><dt>지하철</dt><dd>2 · 3호선 <strong>을지로3가역</strong>에서 도보 약 8분<small>약 475m · 종로3가역, 충무로역에서도 도보 가능</small></dd></div>
         <div class="inforow"><dt>영업시간</dt><dd class="num">일 ~ 금 17:00 – 23:00<br>토요일 16:00 – 24:00<small>365일 연중무휴 · 단체 대관팀은 낮 시간대도 예약 가능</small></dd></div>
-        <div class="inforow"><dt>전화</dt><dd><a href="tel:+821053646915" class="num" style="color:var(--ember);text-decoration:none">010-5364-6915</a>
+        <div class="inforow"><dt>전화</dt><dd><a href="tel:+821053646915" class="num">010-5364-6915</a>
           <button class="copybtn" type="button" data-copy="010-5364-6915">번호 복사</button>
           <small>대관 문의는 365일 24시간 상담받습니다</small></dd></div>
-        <div class="inforow"><dt>예약</dt><dd><a href="https://map.naver.com/p/entry/place/1799596430?placePath=%2Fbooking%3FfromPanelNum%3D1%26additionalHeight%3D76%26locale%3Dko%26svcName%3Dmap_pcv5&amp;entry=plt&amp;searchType=place" target="_blank" rel="noopener" style="color:var(--ember)">네이버 예약 바로가기</a><small>단체 대관은 전화 문의가 빠릅니다</small></dd></div>
-        <div class="inforow"><dt>SNS</dt><dd><a href="https://www.instagram.com/hang_2pm8pm" target="_blank" rel="noopener" style="color:var(--ember)">@hang_2pm8pm</a><small>공연 라인업과 이벤트 소식을 올립니다</small></dd></div>
+        <div class="inforow"><dt>예약</dt><dd><a href="https://map.naver.com/p/entry/place/1799596430?placePath=%2Fbooking%3FfromPanelNum%3D1%26additionalHeight%3D76%26locale%3Dko%26svcName%3Dmap_pcv5&amp;entry=plt&amp;searchType=place" target="_blank" rel="noopener">네이버 예약 바로가기</a><small>단체 대관은 전화 문의가 빠릅니다</small></dd></div>
+        <div class="inforow"><dt>SNS</dt><dd><a href="https://www.instagram.com/hang_2pm8pm" target="_blank" rel="noopener">@hang_2pm8pm</a><small>공연 라인업과 이벤트 소식을 올립니다</small></dd></div>
         <div class="inforow"><dt>주변</dt><dd>명동성당 · 명보아트홀 · 서울영화센터 · 명동 신세계백화점 · 을지로 만선호프 거리 · 을지로 골뱅이골목 · 종로3가 야장거리<small>공연 관람이나 저녁 약속, 쇼핑 전후로 들르기 좋습니다</small></dd></div>
       </dl>
-      <div>
-        <figure style="margin:0">
+      <div class="rv d1">
+        <figure class="loc-fig">
           <picture><source srcset="rooftop-group.webp" type="image/webp">
-          <img src="rooftop-group.jpg" alt="행2PM8PM 3층 루프탑에서 와인잔을 들고 모여 있는 손님들과 초가 처마 조명" loading="lazy" width="1600" height="2074" style="border:1px solid var(--line);width:100%;object-fit:cover;aspect-ratio:4/5"></picture>
-          <figcaption style="font-size:.8rem;color:var(--cream-dim);margin-top:.5rem">3층 루프탑. 실내와 실외로 나뉘어 있고, 실내는 난방 에어컨과 담요를 갖추고 있습니다.</figcaption>
+          <img src="rooftop-group.jpg" alt="행2PM8PM 3층 루프탑에서 와인잔을 들고 모여 있는 손님들과 초가 처마 조명" loading="lazy" width="1600" height="2074"></picture>
+          <figcaption>3층 루프탑. 실내와 실외로 나뉘어 있고, 실내는 난방 에어컨과 담요를 갖추고 있습니다.</figcaption>
         </figure>
-        <div class="cta-row">
-          <a class="btn btn-ghost" href="https://map.naver.com/p/entry/place/1799596430" target="_blank" rel="noopener">네이버 지도에서 보기</a>
-          <a class="btn btn-ghost" href="http://place.map.kakao.com/1286938968" target="_blank" rel="noopener">카카오맵에서 보기</a>
+        <div class="cta-row" style="margin-top:1.6rem">
+          <a class="btn btn-ghost" href="https://map.naver.com/p/entry/place/1799596430" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-map"/></svg>네이버 지도에서 보기</a>
+          <a class="btn btn-ghost" href="http://place.map.kakao.com/1286938968" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-map"/></svg>카카오맵에서 보기</a>
         </div>
       </div>
     </div>
@@ -1048,11 +1203,14 @@ footer a:hover{color:var(--ember)}
 </section>
 
 <!-- ════════ FAQ ════════ -->
-<section class="band" id="faq" aria-labelledby="h-faq" style="background:var(--ink-2);border-block:1px solid var(--line)">
-  <div class="wrap">
+<section class="band band--alt" id="faq" aria-labelledby="h-faq">
+  <div class="wrap faq-grid">
     <div class="sec-head">
-      <span class="kicker">FAQ</span>
-      <h2 class="h2" id="h-faq">자주 묻는 질문</h2>
+      <div class="sec-index rv"><span class="sec-no" aria-hidden="true">05</span><span class="label">FAQ</span></div>
+      <div class="sec-body rv d1">
+        <h2 class="h2" id="h-faq">자주 묻는 질문</h2>
+        <p class="lead">더 궁금한 점은 <a href="tel:+821053646915" class="hl num" style="text-decoration:none">010-5364-6915</a>로 편하게 물어봐 주세요.</p>
+      </div>
     </div>
     <div class="faq">
       <details open><summary>행2PM8PM은 어떤 곳인가요?</summary><div class="ans">서울 중구 수표로12길 10에 있는 을지로 라이브 와인바입니다. 1층 홀, 2층 공연장, 3층 루프탑까지 건물 3개 층을 모두 사용하는, 을지로에서 보기 드문 대형 술집입니다. 365일 매일 라이브 공연이 열리고, 대표 메뉴는 누적 5만 개 판매를 넘긴 오리 몽둥이고기입니다.</div></details>
@@ -1077,13 +1235,14 @@ footer a:hover{color:var(--ember)}
 
 <!-- ════════ 마지막 CTA ════════ -->
 <section class="finalcta" aria-labelledby="h-cta">
-  <div class="wrap">
+  <div class="wrap rv">
+    <span class="label">Tonight at 2PM8PM</span>
     <h2 class="h2" id="h-cta">오늘 저녁에도 공연은 있습니다</h2>
     <p>자리 예약은 네이버 예약으로, 단체 대관은 전화 주세요. 365일 24시간 받습니다.</p>
     <a class="phone-big num" href="tel:+821053646915">010-5364-6915</a>
     <div class="cta-row">
-      <a class="btn btn-primary" href="https://map.naver.com/p/entry/place/1799596430?placePath=%2Fbooking%3FfromPanelNum%3D1%26additionalHeight%3D76%26locale%3Dko%26svcName%3Dmap_pcv5&amp;entry=plt&amp;searchType=place" target="_blank" rel="noopener">네이버 예약하기</a>
-      <a class="btn btn-ghost" href="https://www.instagram.com/hang_2pm8pm" target="_blank" rel="noopener">@hang_2pm8pm</a>
+      <a class="btn btn-primary" href="https://map.naver.com/p/entry/place/1799596430?placePath=%2Fbooking%3FfromPanelNum%3D1%26additionalHeight%3D76%26locale%3Dko%26svcName%3Dmap_pcv5&amp;entry=plt&amp;searchType=place" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg>네이버 예약하기</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/hang_2pm8pm" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-ig"/></svg>@hang_2pm8pm</a>
     </div>
   </div>
 </section>
@@ -1092,24 +1251,48 @@ footer a:hover{color:var(--ember)}
 
 <footer>
   <div class="wrap">
-    <div style="font-family:var(--display);font-weight:900;font-size:1.1rem;color:var(--cream)">행2PM8PM</div>
-    <div>서울특별시 중구 수표로12길 10, 1~3층 &nbsp;|&nbsp; <span class="num">010-5364-6915</span> &nbsp;|&nbsp; <span class="num">일~금 17:00–23:00 · 토 16:00–24:00 · 연중무휴</span></div>
-    <nav class="flinks" aria-label="푸터 링크">
-      <a href="#live">매일 공연</a><a href="#rental">단체 대관</a><a href="#menu">메뉴</a>
-      <a href="#vip">최태원 회장 방문</a><a href="#location">오시는 길</a><a href="#faq">FAQ</a>
-      <a href="https://map.naver.com/p/entry/place/1799596430" target="_blank" rel="noopener">네이버 지도</a>
-      <a href="https://www.instagram.com/hang_2pm8pm" target="_blank" rel="noopener">인스타그램</a>
-    </nav>
+    <div class="f-top">
+      <div class="f-word" aria-hidden="true">Hang <span class="it">2PM</span><br><span class="it">8PM</span></div>
+      <div>
+        <div style="font-family:var(--serif-ko);font-weight:900;font-size:1.25rem;color:var(--text);margin-bottom:1rem">행2PM8PM</div>
+        <nav class="flinks" aria-label="푸터 링크">
+          <a href="#live">매일 공연</a><a href="#rental">단체 대관</a><a href="#menu">메뉴</a>
+          <a href="#vip">최태원 회장 방문</a><a href="#location">오시는 길</a><a href="#faq">FAQ</a>
+          <a href="https://map.naver.com/p/entry/place/1799596430" target="_blank" rel="noopener">네이버 지도</a>
+          <a href="https://www.instagram.com/hang_2pm8pm" target="_blank" rel="noopener">인스타그램</a>
+        </nav>
+      </div>
+    </div>
+    <div class="f-info"><span>서울특별시 중구 수표로12길 10, 1~3층</span><span class="num">010-5364-6915</span><span class="num">일~금 17:00–23:00 · 토 16:00–24:00 · 연중무휴</span></div>
     <p class="seo-keywords">서울 을지로 와인바 · 을지로 라이브바 · 단체대관 가능한 술집 · 피로연 장소 · 회식 장소 · 을지로3가 술집 · 을지로 공연하는 술집 · 을지로 단체 대관 · 을지로 대형 술집 · 결혼식 뒷풀이 장소 · 연말모임 장소 · 송년회 장소 · 기업행사 대관 · 을지로 데이트 · 을지로 혼술 · 혼술바 · 을지로 오리고기 · 충무로 와인바 · 종로3가 와인바 · 명동 근처 단체 회식</p>
-    <div style="color:rgba(179,162,142,.55);font-size:.78rem">© 2026 행2PM8PM. All rights reserved.</div>
+    <div class="f-copy">© 2026 행2PM8PM. All rights reserved.</div>
   </div>
 </footer>
 
-<a class="fab" href="tel:+821053646915" aria-label="전화 걸기 010-5364-6915">📞 대관문의</a>
+<a class="fab" href="tel:+821053646915" aria-label="전화 걸기 010-5364-6915"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>대관문의</a>
 
 <script>
 (function(){
   "use strict";
+
+  /* ── 상단 바: 스크롤하면 배경 채우기 ── */
+  var bar = document.getElementById("topbar");
+  function onScroll(){ if(bar) bar.classList.toggle("solid", window.scrollY > 40); }
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  /* ── 스크롤 등장 ── */
+  var rvs = document.querySelectorAll(".rv");
+  if("IntersectionObserver" in window){
+    var rio = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add("in"); rio.unobserve(en.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    rvs.forEach(function(el){ rio.observe(el); });
+  } else {
+    rvs.forEach(function(el){ el.classList.add("in"); });
+  }
 
   /* ── 오늘 요일 공연 슬롯 강조 ── */
   try{
@@ -1210,6 +1393,10 @@ footer a:hover{color:var(--ember)}
   }
 
   /* ── 영상 소리 켜기 / 끄기 ── */
+  function setSoundLabel(b, isOn){
+    b.setAttribute("aria-pressed", isOn ? "true" : "false");
+    var t = b.querySelector(".sb-t"); if(t) t.textContent = isOn ? "소리 끄기" : "소리 켜기";
+  }
   document.querySelectorAll(".soundbtn").forEach(function(btn){
     btn.addEventListener("click", function(){
       var v = btn.parentNode.querySelector("video");
@@ -1221,13 +1408,12 @@ footer a:hover{color:var(--ember)}
           if(other !== v){
             other.muted = true;
             var ob = other.parentNode.querySelector(".soundbtn");
-            if(ob){ ob.textContent = "🔇 소리 켜기"; ob.setAttribute("aria-pressed","false"); }
+            if(ob){ setSoundLabel(ob, false); }
           }
         });
       }
       v.muted = !on;
-      btn.textContent = v.muted ? "🔇 소리 켜기" : "🔊 소리 끄기";
-      btn.setAttribute("aria-pressed", v.muted ? "false" : "true");
+      setSoundLabel(btn, !v.muted);
       if(!v.muted && v.paused){
         var p = v.play(); if(p && p.catch) p.catch(function(){});
       }
