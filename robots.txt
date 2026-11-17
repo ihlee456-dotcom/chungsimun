@@ -1,68 +1,10 @@
-# 컨택싱어 — 검색엔진과 AI 검색 모두 허용 (관리자 화면 /admin/ 은 제외)
-
-User-agent: Googlebot
-Allow: /
-Disallow: /CUNGSIMUN/admin.html
-
-User-agent: Google-Extended
-Allow: /
-Disallow: /CUNGSIMUN/admin.html
-
-User-agent: Yeti
-Allow: /
-Disallow: /CUNGSIMUN/admin.html
-
-User-agent: Daumoa
-Allow: /
-Disallow: /CUNGSIMUN/admin.html
-
-User-agent: Bingbot
-Allow: /
-Disallow: /CUNGSIMUN/admin.html
-
-User-agent: GPTBot
-Allow: /
-Disallow: /CUNGSIMUN/admin.html
-
-User-agent: OAI-SearchBot
-Allow: /
-Disallow: /CUNGSIMUN/admin.html
-
-User-agent: ChatGPT-User
-Allow: /
-Disallow: /CUNGSIMUN/admin.html
-
-User-agent: ClaudeBot
-Allow: /
-Disallow: /CUNGSIMUN/admin.html
-
-User-agent: Claude-SearchBot
-Allow: /
-Disallow: /CUNGSIMUN/admin.html
-
-User-agent: Claude-User
-Allow: /
-Disallow: /CUNGSIMUN/admin.html
-
-User-agent: PerplexityBot
-Allow: /
-Disallow: /CUNGSIMUN/admin.html
-
-User-agent: Perplexity-User
-Allow: /
-Disallow: /CUNGSIMUN/admin.html
-
-User-agent: Applebot
-Allow: /
-Disallow: /CUNGSIMUN/admin.html
-
-User-agent: Applebot-Extended
-Allow: /
-Disallow: /CUNGSIMUN/admin.html
+# 행2PM8PM 공식 홈페이지 — 검색엔진·AI 검색 모두 허용
+# 참고: 검색엔진은 도메인 루트(ihlee456-dotcom.github.io/robots.txt)만 읽으므로,
+# 사이트맵은 구글 서치콘솔 · 네이버 서치어드바이저 · Bing 웹마스터에 직접 제출해야 합니다.
 
 User-agent: *
 Allow: /
-Disallow: /CUNGSIMUN/admin.html
-Disallow: /CUNGSIMUN/404.html
+Disallow: /chungsimun/admin.html
+Disallow: /chungsimun/404.html
 
-Sitemap: https://ihlee456-dotcom.github.io/CUNGSIMUN/sitemap.xml
+Sitemap: https://ihlee456-dotcom.github.io/chungsimun/sitemap.xml
