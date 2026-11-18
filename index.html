@@ -527,10 +527,17 @@ section[id]{scroll-margin-top:72px}
 .hero-grid{display:grid;gap:clamp(1.6rem,4vw,3.5rem);grid-template-columns:1fr;align-items:center;
   padding-top:clamp(20px,4vw,56px);padding-bottom:clamp(28px,4vw,48px)}
 @media(min-width:960px){.hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}}
-.hero-media{position:relative;overflow:hidden;border-radius:var(--r);background:var(--surface-2);aspect-ratio:4/3;order:-1}
-@media(min-width:960px){.hero-media{order:0;aspect-ratio:5/4}}
-.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 40%;transform:scale(1.04);animation:heroZoom 14s var(--ease) forwards}
-@keyframes heroZoom{to{transform:scale(1)}}
+.hero-media{position:relative;overflow:hidden;border-radius:var(--r);background:#1b1c1f;aspect-ratio:1/1;order:-1;margin:0}
+@media(min-width:600px) and (max-width:959px){.hero-media{aspect-ratio:16/10}}
+@media(min-width:960px){.hero-media{order:0;aspect-ratio:1/1;max-height:600px}}
+.hero-media video,.hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 32%;display:block}
+.hero-media::after{content:"";position:absolute;inset:auto 0 0 0;height:28%;background:linear-gradient(0deg,rgba(0,0,0,.28),transparent);pointer-events:none}
+.hero-vbtn{position:absolute;right:12px;bottom:12px;z-index:2;width:40px;height:40px;border-radius:50%;border:0;cursor:pointer;
+  display:grid;place-items:center;background:rgba(255,255,255,.92);color:var(--text);box-shadow:0 4px 14px -6px rgba(0,0,0,.35)}
+.hero-vbtn:hover{background:#fff}
+.hero-vbtn .i-play{display:none}
+.hero-vbtn[aria-pressed="true"] .i-play{display:block}
+.hero-vbtn[aria-pressed="true"] .i-pause{display:none}
 .hero-media .tag-live{position:absolute;left:14px;top:14px;display:inline-flex;align-items:center;gap:.45rem;
   background:rgba(255,255,255,.94);color:var(--text);font-size:.8rem;font-weight:700;padding:.4rem .75rem;border-radius:999px;
   box-shadow:0 4px 14px -6px rgba(0,0,0,.3)}
@@ -905,12 +912,10 @@ footer a:hover{color:var(--accent)}
         <span class="badge">SK 최태원 회장 방문</span>
       </div>
     </div>
-    <figure class="hero-media" aria-hidden="true">
-      <picture>
-      <source srcset="hoesik-rooftop.webp" type="image/webp">
-      <img src="hoesik-rooftop.jpg" alt="" width="1600" height="1069" fetchpriority="high">
-    </picture>
+    <figure class="hero-media">
+      <video id="heroVideo" src="hero-stage.mp4" poster="hero-stage.jpg" autoplay muted loop playsinline preload="auto" width="640" height="800" aria-label="행2PM8PM 2층 무대에서 기타 치며 노래하는 라이브 공연 장면 (소리 없음)"></video>
       <span class="tag-live">오늘 밤도 라이브</span>
+      <button type="button" class="hero-vbtn" id="heroVbtn" aria-pressed="false" aria-label="영상 멈추기"><svg class="i-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg><svg class="i-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg></button>
     </figure>
   </div>
   <div class="wrap">
@@ -1488,6 +1493,18 @@ if(m>=o&&m<c){el.classList.add('is-open');t='지금 영업 중 · '+(d===6?'24:0
 else{el.classList.remove('is-open');var n=m<o?d:(d+1)%7;t='영업 종료 · '+(m<o?'오늘 ':'내일 ')+(n===6?'16:00':'17:00')+' 오픈';}
 el.textContent=t;}
 tick();setInterval(tick,60000);})();
+</script>
+<script>
+/* 첫 화면 무대 영상 — 소리 없이 자동 반복, 화면 밖이면 멈춤, 동작 줄이기 설정 존중 */
+(function(){var v=document.getElementById('heroVideo'),b=document.getElementById('heroVbtn');if(!v||!b)return;
+var userPaused=false;try{if(matchMedia('(prefers-reduced-motion: reduce)').matches){userPaused=true;v.removeAttribute('autoplay');v.pause();}}catch(e){}
+function sync(){var p=v.paused;b.setAttribute('aria-pressed',p?'true':'false');b.setAttribute('aria-label',p?'영상 재생':'영상 멈추기');}
+function play(){var r=v.play();if(r&&r.catch)r.catch(function(){});}
+b.addEventListener('click',function(){if(v.paused){userPaused=false;play();}else{userPaused=true;v.pause();}});
+v.addEventListener('play',sync);v.addEventListener('pause',sync);
+if('IntersectionObserver'in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(!userPaused)play();}else v.pause();});},{threshold:.15}).observe(v);}
+document.addEventListener('visibilitychange',function(){if(document.hidden)v.pause();else if(!userPaused)play();});
+sync();})();
 </script>
 </body>
 </html>
