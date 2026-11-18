@@ -523,30 +523,51 @@ section[id]{scroll-margin-top:72px}
 @media(min-width:1040px){.navlinks{display:flex}}
 
 /* ── 히어로: 흰 바탕 + 사진 카드 ── */
-.hero{position:relative;padding-top:calc(64px + env(safe-area-inset-top,0px));background:var(--bg)}
-.hero-grid{display:grid;gap:clamp(1.6rem,4vw,3.5rem);grid-template-columns:1fr;align-items:center;
-  padding-top:clamp(20px,4vw,56px);padding-bottom:clamp(28px,4vw,48px)}
-@media(min-width:960px){.hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}}
-.hero-media{position:relative;overflow:hidden;border-radius:var(--r);background:#1b1c1f;aspect-ratio:1/1;order:-1;margin:0}
-@media(min-width:600px) and (max-width:959px){.hero-media{aspect-ratio:16/10}}
-@media(min-width:960px){.hero-media{order:0;aspect-ratio:1/1;max-height:600px}}
-.hero-media video,.hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 32%;display:block}
-.hero-media::after{content:"";position:absolute;inset:auto 0 0 0;height:28%;background:linear-gradient(0deg,rgba(0,0,0,.28),transparent);pointer-events:none}
-.hero-vbtn{position:absolute;right:12px;bottom:12px;z-index:2;width:40px;height:40px;border-radius:50%;border:0;cursor:pointer;
-  display:grid;place-items:center;background:rgba(255,255,255,.92);color:var(--text);box-shadow:0 4px 14px -6px rgba(0,0,0,.35)}
-.hero-vbtn:hover{background:#fff}
+/* ── 히어로: 무대 영상을 전체 배경으로 ── */
+.hero{position:relative;background:var(--bg)}
+.hero-stage{position:relative;isolation:isolate;overflow:hidden;background:#111;color:#fff;
+  min-height:clamp(600px,100svh,900px);display:flex;align-items:flex-end;
+  padding-top:calc(64px + env(safe-area-inset-top,0px))}
+.hero-bg{position:absolute;inset:0;z-index:-1}
+.hero-bg video,.hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block}
+.hero-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(10,10,12,.5) 0%,rgba(10,10,12,.05) 16%,rgba(10,10,12,.1) 30%,rgba(10,10,12,.66) 50%,rgba(10,10,12,.88) 72%,rgba(10,10,12,.94) 100%)}
+@media(min-width:960px){.hero-bg::after{
+  background:linear-gradient(180deg,rgba(10,10,12,.5) 0%,rgba(10,10,12,.05) 24%,rgba(10,10,12,.25) 55%,rgba(10,10,12,.82) 100%),
+             linear-gradient(90deg,rgba(10,10,12,.55) 0%,rgba(10,10,12,0) 60%)}}
+.hero-inner{position:relative;width:100%;padding-top:clamp(2rem,6vw,4rem);padding-bottom:clamp(2.2rem,6vw,4.5rem)}
+.hero-copy{max-width:640px}
+.hero .tag-live{position:absolute;left:var(--gutter);top:calc(78px + env(safe-area-inset-top,0px));z-index:2;
+  display:inline-flex;align-items:center;gap:.45rem;font-size:.8rem;font-weight:700;padding:.4rem .8rem;border-radius:999px;
+  background:rgba(20,20,24,.55);color:#fff;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18)}
+.hero .tag-live::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:#ff4d4f;box-shadow:0 0 0 3px rgba(255,77,79,.25);animation:livePulse 1.6s ease-in-out infinite}
+@keyframes livePulse{50%{opacity:.35}}
+.hero-vbtn{position:absolute;right:var(--gutter);top:calc(76px + env(safe-area-inset-top,0px));z-index:2;width:40px;height:40px;border-radius:50%;cursor:pointer;
+  display:grid;place-items:center;background:rgba(20,20,24,.55);color:#fff;border:1px solid rgba(255,255,255,.18);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.hero-vbtn:hover{background:rgba(20,20,24,.75)}
 .hero-vbtn .i-play{display:none}
 .hero-vbtn[aria-pressed="true"] .i-play{display:block}
 .hero-vbtn[aria-pressed="true"] .i-pause{display:none}
-.hero-media .tag-live{position:absolute;left:14px;top:14px;display:inline-flex;align-items:center;gap:.45rem;
-  background:rgba(255,255,255,.94);color:var(--text);font-size:.8rem;font-weight:700;padding:.4rem .75rem;border-radius:999px;
-  box-shadow:0 4px 14px -6px rgba(0,0,0,.3)}
-.hero-media .tag-live::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:#e5383b;box-shadow:0 0 0 3px rgba(229,56,59,.2)}
-.hero-eyebrow{font-family:var(--latin);font-style:italic;font-size:clamp(1rem,1.3vw,1.12rem);color:var(--gold);margin-bottom:.9rem}
-.hero h1{font-size:clamp(2rem,4.4vw,3.3rem);font-weight:800;letter-spacing:-.05em;line-height:1.22}
-.hero h1 .line2{display:block;color:var(--accent)}
-.hero-sub{margin-top:1.3rem;max-width:44ch;color:var(--text-2);font-size:clamp(1rem,1.25vw,1.08rem);line-height:1.8}
-.hero-sub strong{color:var(--text);font-weight:700}
+.hero-eyebrow{font-family:var(--latin);font-style:italic;font-size:clamp(1rem,1.3vw,1.12rem);color:#f2c98a;margin-bottom:.8rem;text-shadow:0 1px 12px rgba(0,0,0,.4)}
+.hero h1{font-size:clamp(2.1rem,5vw,3.8rem);font-weight:800;letter-spacing:-.05em;line-height:1.2;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.hero h1 .line2{display:block;color:#ffd9a0}
+.hero-sub{margin-top:1.1rem;max-width:44ch;color:rgba(255,255,255,.86);font-size:clamp(.98rem,1.25vw,1.08rem);line-height:1.75;text-shadow:0 1px 12px rgba(0,0,0,.4)}
+.hero-sub strong{color:#fff;font-weight:700}
+.hero .cta-row{margin-top:1.6rem}
+.hero .btn-ghost{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.45);color:#fff;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.hero .btn-ghost:hover{background:rgba(255,255,255,.22);border-color:#fff;color:#fff}
+.hero .badge-row{color:rgba(255,255,255,.9);margin-top:1.3rem}
+.hero .badge{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22)}
+@media(max-width:599px){.hero .badge-row{display:none}.hero-sub{font-size:.95rem;line-height:1.7}}
+.hero .floor-index{padding-top:clamp(16px,2.5vw,28px)}
+/* 영상 위에서는 상단 바를 투명하게, 스크롤하면 흰색 */
+.topbar:not(.solid){background:transparent;border-bottom-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+.topbar:not(.solid) .brand b{color:#fff}
+.topbar:not(.solid) .brand small{color:#f2c98a}
+.topbar:not(.solid) .navlinks a{color:rgba(255,255,255,.85)}
+.topbar:not(.solid) .navlinks a:hover{color:#fff}
+.topbar,.topbar .brand b,.topbar .brand small,.topbar .navlinks a{transition:background var(--t-med) var(--ease),color var(--t-med) var(--ease),border-color var(--t-med),box-shadow var(--t-med)}
 .badge-row{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.6rem;font-size:.82rem;font-weight:600;color:var(--text-2)}
 .badge{display:inline-flex;align-items:center;padding:.35rem .75rem;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
 /* 층 인덱스: 3칸 카드 */
@@ -896,27 +917,29 @@ footer a:hover{color:var(--accent)}
 
 <!-- ════════ 히어로 ════════ -->
 <section class="hero" aria-labelledby="h1">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <p class="hero-eyebrow">Euljiro Live Wine Bar &mdash; since 2PM</p>
-      <h1 id="h1">매일 밤 공연이 있는<span class="line2">을지로 통건물 와인바</span></h1>
-      <p class="hero-sub js-speakable">1층 홀부터 2층 공연장, 3층 루프탑까지. 을지로에서 건물 세 개 층을 통째로 쓰는 유일한 대형 와인바 <strong>행2PM8PM</strong>입니다. 365일 매일 무료 라이브 공연이 열리고, 10명부터 100명까지 층별 통대관이 가능합니다.</p>
-      <div class="cta-row">
-        <a class="btn btn-naver" href="https://map.naver.com/p/entry/place/1799596430?placePath=%2Fbooking%3FfromPanelNum%3D1%26additionalHeight%3D76%26locale%3Dko%26svcName%3Dmap_pcv5&amp;entry=plt&amp;searchType=place" target="_blank" rel="noopener"><span class="n" aria-hidden="true">N</span>네이버 예약하기</a>
-        <a class="btn btn-ghost" href="tel:+821053646915"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>단체 대관 문의 &middot; 24시간</a>
-      </div>
-      <div class="badge-row">
-        <span class="badge">365일 연중무휴</span>
-        <span class="badge">1~3층 통건물</span>
-        <span class="badge">대관료 0원</span>
-        <span class="badge">SK 최태원 회장 방문</span>
+  <div class="hero-stage">
+    <div class="hero-bg">
+      <video id="heroVideo" src="hero-stage.mp4" poster="hero-stage.jpg" autoplay muted loop playsinline preload="auto" width="640" height="800" aria-label="행2PM8PM 2층 무대에서 기타 치며 노래하는 라이브 공연 장면 (소리 없음)"></video>
+    </div>
+    <span class="tag-live">오늘 밤도 라이브</span>
+    <button type="button" class="hero-vbtn" id="heroVbtn" aria-pressed="false" aria-label="영상 멈추기"><svg class="i-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg><svg class="i-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg></button>
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">Euljiro Live Wine Bar &mdash; since 2PM</p>
+        <h1 id="h1">매일 밤 공연이 있는<span class="line2">을지로 통건물 와인바</span></h1>
+        <p class="hero-sub js-speakable">1층 홀부터 2층 공연장, 3층 루프탑까지. 을지로에서 건물 세 개 층을 통째로 쓰는 유일한 대형 와인바 <strong>행2PM8PM</strong>입니다. 365일 매일 무료 라이브 공연이 열리고, 10명부터 100명까지 층별 통대관이 가능합니다.</p>
+        <div class="cta-row">
+          <a class="btn btn-naver" href="https://map.naver.com/p/entry/place/1799596430?placePath=%2Fbooking%3FfromPanelNum%3D1%26additionalHeight%3D76%26locale%3Dko%26svcName%3Dmap_pcv5&amp;entry=plt&amp;searchType=place" target="_blank" rel="noopener"><span class="n" aria-hidden="true">N</span>네이버 예약하기</a>
+          <a class="btn btn-ghost" href="tel:+821053646915"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>단체 대관 문의 &middot; 24시간</a>
+        </div>
+        <div class="badge-row">
+          <span class="badge">365일 연중무휴</span>
+          <span class="badge">1~3층 통건물</span>
+          <span class="badge">대관료 0원</span>
+          <span class="badge">SK 최태원 회장 방문</span>
+        </div>
       </div>
     </div>
-    <figure class="hero-media">
-      <video id="heroVideo" src="hero-stage.mp4" poster="hero-stage.jpg" autoplay muted loop playsinline preload="auto" width="640" height="800" aria-label="행2PM8PM 2층 무대에서 기타 치며 노래하는 라이브 공연 장면 (소리 없음)"></video>
-      <span class="tag-live">오늘 밤도 라이브</span>
-      <button type="button" class="hero-vbtn" id="heroVbtn" aria-pressed="false" aria-label="영상 멈추기"><svg class="i-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg><svg class="i-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg></button>
-    </figure>
   </div>
   <div class="wrap">
     <nav class="floor-index" aria-label="층별 안내">
