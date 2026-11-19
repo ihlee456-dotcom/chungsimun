@@ -127,5 +127,6 @@ td strong{color:var(--accent)}
 @media(max-width:520px){
   th,td{padding:10px 12px;font-size:.9rem}
   .pt .call .t-long{display:none}
+  .kv tbody th{white-space:normal;width:38%}
 }
 @media(min-width:521px){.pt .call .t-short{display:none}}

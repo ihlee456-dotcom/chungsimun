@@ -30,8 +30,13 @@
     </image:image>
     <image:image>
       <image:loc>https://ihlee456-dotcom.github.io/chungsimun/menu-board.jpg</image:loc>
-      <image:title>행2PM8PM 메뉴판</image:title>
-      <image:caption>세트 할인과 메인·사이드 전체 가격표</image:caption>
+      <image:title>행2PM8PM 푸드 메뉴판</image:title>
+      <image:caption>세트 할인, 메인, 사이드 전체 가격표 · NEW 미니오뎅탕 9,000원</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://ihlee456-dotcom.github.io/chungsimun/wine-list.jpg</image:loc>
+      <image:title>행2PM8PM 와인 리스트</image:title>
+      <image:caption>드라이 · 스위트 와인, 맥주, 칵테일, 논알콜 가격표</image:caption>
     </image:image>
 
     <video:video>
@@ -107,6 +112,17 @@
     <image:image>
       <image:loc>https://ihlee456-dotcom.github.io/chungsimun/og-cover.jpg</image:loc>
       <image:title>Hang 2PM8PM live music wine bar in Euljiro, Seoul</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ihlee456-dotcom.github.io/chungsimun/euljiro-oden-bar.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://ihlee456-dotcom.github.io/chungsimun/menu-oden.jpg</image:loc>
+      <image:title>미니오뎅탕 · 행2PM8PM 사이드 메뉴판</image:title>
+      <image:caption>을지로 행2PM8PM 신메뉴 미니오뎅탕 1인분 9,000원</image:caption>
     </image:image>
   </url>
 </urlset>
