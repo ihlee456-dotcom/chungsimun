@@ -15,6 +15,7 @@
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.75;
   letter-spacing:-.01em;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+:lang(zh) body,:lang(ja) body{word-break:normal;line-break:strict}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 h1,h2,h3{margin:0;line-height:1.35;letter-spacing:-.03em;text-wrap:balance}

@@ -125,4 +125,31 @@
       <image:caption>을지로 행2PM8PM 신메뉴 미니오뎅탕 1인분 9,000원</image:caption>
     </image:image>
   </url>
+  <url>
+    <loc>https://ihlee456-dotcom.github.io/chungsimun/zh-hans.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://ihlee456-dotcom.github.io/chungsimun/og-cover.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ihlee456-dotcom.github.io/chungsimun/zh-hant.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://ihlee456-dotcom.github.io/chungsimun/og-cover.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ihlee456-dotcom.github.io/chungsimun/ja.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://ihlee456-dotcom.github.io/chungsimun/og-cover.jpg</image:loc>
+    </image:image>
+  </url>
 </urlset>
