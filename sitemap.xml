@@ -4,7 +4,7 @@
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://ihlee456-dotcom.github.io/chungsimun/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
 
@@ -58,5 +58,55 @@
       <video:duration>24</video:duration>
       <video:family_friendly>yes</video:family_friendly>
     </video:video>
+  </url>
+  <url>
+    <loc>https://ihlee456-dotcom.github.io/chungsimun/wedding-afterparty.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://ihlee456-dotcom.github.io/chungsimun/rooftop-group.jpg</image:loc>
+      <image:title>서울 결혼식 뒷풀이 장소 행2PM8PM 루프탑</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ihlee456-dotcom.github.io/chungsimun/group-rental.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://ihlee456-dotcom.github.io/chungsimun/indoor-group.jpg</image:loc>
+      <image:title>을지로 단체대관 술집 행2PM8PM 실내 홀</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ihlee456-dotcom.github.io/chungsimun/company-dinner.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://ihlee456-dotcom.github.io/chungsimun/hoesik-rooftop.jpg</image:loc>
+      <image:title>을지로3가 회식장소 행2PM8PM 루프탑 회식</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ihlee456-dotcom.github.io/chungsimun/live-music.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://ihlee456-dotcom.github.io/chungsimun/hero-stage.jpg</image:loc>
+      <image:title>행2PM8PM 2층 라이브 공연 무대</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ihlee456-dotcom.github.io/chungsimun/en.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://ihlee456-dotcom.github.io/chungsimun/og-cover.jpg</image:loc>
+      <image:title>Hang 2PM8PM live music wine bar in Euljiro, Seoul</image:title>
+    </image:image>
   </url>
 </urlset>
