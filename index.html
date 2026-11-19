@@ -87,6 +87,7 @@
       "priceRange": "₩₩",
       "maximumAttendeeCapacity": 145,
       "currenciesAccepted": "KRW",
+      "knowsLanguage": ["ko", "en"],
       "paymentAccepted": "현금, 신용카드, 계좌이체",
       "servesCuisine": ["와인바", "오리요리", "이탈리안", "안주"],
       "address": {
@@ -134,6 +135,10 @@
         { "@type": "LocationFeatureSpecification", "name": "최소주문금액 없음", "value": true },
         { "@type": "LocationFeatureSpecification", "name": "콜키지 가능 (병당 30,000원)", "value": true },
         { "@type": "LocationFeatureSpecification", "name": "연중무휴", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "외부 케이크 반입 가능", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "영어 응대 · 영어 메뉴판", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "무대 · 마이크 2개 · 음향장비 · 앰프 · 노트북 이용 가능", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "주차: 마른내길 노상공영주차장 도보 3분 (월~금 19시 이후 · 토 15시 이후 · 일요일 · 공휴일 무료)", "value": true },
         { "@type": "LocationFeatureSpecification", "name": "예약 가능", "value": true }
       ],
       "sameAs": [
@@ -370,7 +375,10 @@
         {"@type": "Question", "name": "대관료와 최소주문금액 없이 30~50명이 라이브 공연과 함께 모일 수 있는 곳이 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "행2PM8PM 2층 공연장이 그 조건에 맞습니다. 착석 최대 75석에 대관료 0원, 최소주문금액 0원이고, 매일 공연하는 무대를 그대로 쓰시면서 대관팀만을 위한 라이브 공연을 무료로 보실 수 있습니다. 와인, 하이볼, 생맥주와 오리 몽둥이고기 같은 안주를 드신 만큼만 계산하시면 됩니다."}},
         {"@type": "Question", "name": "명동·충무로·종로 근처에서 단체로 이동하기 편한가요?", "acceptedAnswer": {"@type": "Answer", "text": "지하철 2·3호선 을지로3가역에서 도보 약 8분이고, 충무로역과 종로3가역에서도 걸어오실 수 있습니다. 명동성당과 명동 신세계백화점 쪽에서도 가까워 명동·중구·종로 일대의 예식장이나 회사에서 2차로 옮기기 좋습니다."}},
         {"@type": "Question", "name": "서울에서 매일 라이브 공연을 하는 와인바가 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "을지로 행2PM8PM은 365일 매일 라이브 공연을 하는 와인바입니다. 월~목요일 저녁 8시, 금요일 7시 30분과 9시, 토요일 7시와 9시, 일요일 7시에 공연이 시작되고 관람료는 없습니다."}},
-        {"@type": "Question", "name": "외국인 친구와 함께 가기에도 괜찮나요?", "acceptedAnswer": {"@type": "Answer", "text": "외국 재즈 보컬과 국내 인디 뮤지션이 번갈아 공연해서 외국인 손님과 함께 오시기 좋습니다. 영문 안내는 https://ihlee456-dotcom.github.io/chungsimun/en.html 에 정리해 두었습니다."}}
+        {"@type": "Question", "name": "외국인 친구와 함께 가기에도 괜찮나요?", "acceptedAnswer": {"@type": "Answer", "text": "영어 응대가 가능하고 영어 메뉴판이 있습니다. 외국 재즈 보컬과 국내 인디 뮤지션이 번갈아 공연해서 외국인 손님과 함께 오시기 좋습니다. 영문 안내는 https://ihlee456-dotcom.github.io/chungsimun/en.html 에 정리해 두었습니다."}},
+        {"@type": "Question", "name": "생일파티나 기념일에 외부 케이크를 가져가도 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "네, 외부 케이크 반입이 가능합니다. 그래서 생일파티나 기념일, 결혼식 뒷풀이 자리로 많이 오십니다. 공연 순서에 맞춰 축하하고 싶으시면 예약하실 때 말씀해 주세요."}},
+        {"@type": "Question", "name": "대관할 때 마이크나 음향장비, 빔프로젝터를 쓸 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "무대와 마이크 2개, 음향장비, 앰프, 노트북을 이용하실 수 있습니다. 빔프로젝터는 매장에 없지만 외부 대여 업체를 통해 퀵으로 받아 직접 쓰실 수 있습니다(대략 3~4만원)."}},
+        {"@type": "Question", "name": "주차할 곳이 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "도보 3분 거리에 마른내길 노상공영주차장이 있습니다. 월~금요일은 저녁 7시 이후, 토요일은 오후 3시 이후, 일요일과 공휴일은 종일 무료입니다."}}
       ]
     }
   ]
@@ -1163,8 +1171,12 @@ footer a:hover{color:var(--accent)}
             <tr><th scope="row">공연</th><td>365일 매일 라이브 · 관람료 없음 · 대관팀 전용 공연 무료</td></tr>
             <tr><th scope="row">낮 시간 대관</th><td>단체 대관팀은 영업 전 12:00~17:00에도 이용 가능</td></tr>
             <tr><th scope="row">영업시간</th><td class="num">일~금 17:00–23:00 · 토 16:00–24:00 · 연중무휴</td></tr>
+            <tr><th scope="row">장비</th><td>무대 · 마이크 2개 · 음향장비 · 앰프 · 노트북 이용 가능 · 빔프로젝터는 외부 업체 퀵 대여로 이용 가능(약 3~4만원)</td></tr>
+            <tr><th scope="row">외부 케이크</th><td>반입 가능 · 생일파티 · 기념일</td></tr>
             <tr><th scope="row">콜키지</th><td>병당 30,000원</td></tr>
+            <tr><th scope="row">영어 응대</th><td>가능 · 영어 메뉴판 있음</td></tr>
             <tr><th scope="row">위치</th><td>서울 중구 수표로12길 10 · 을지로3가역(2·3호선) 도보 약 8분 · 충무로역 · 종로3가역 도보 가능</td></tr>
+            <tr><th scope="row">주차</th><td>마른내길 노상공영주차장 도보 3분 · 무료: 월~금 19시 이후, 토 15시 이후, 일요일 · 공휴일 종일</td></tr>
             <tr><th scope="row">문의</th><td><a href="tel:+821053646915" class="num">010-5364-6915</a> (365일 24시간) · 네이버 예약 · 인스타그램 DM</td></tr>
           </tbody>
         </table>
@@ -1180,7 +1192,7 @@ footer a:hover{color:var(--accent)}
       <li class="usecase">신년회</li>
       <li class="usecase">기업 행사 · 워크숍 뒤풀이</li>
       <li class="usecase">동호회 · 소모임</li>
-      <li class="usecase">생일 · 기념일 파티</li>
+      <li class="usecase">생일 · 기념일 파티 (외부 케이크 반입 가능)</li>
       <li class="usecase">대학 동문회</li>
     </ul>
 
@@ -1305,6 +1317,7 @@ footer a:hover{color:var(--accent)}
           <button class="copybtn" type="button" data-copy="서울특별시 중구 수표로12길 10">주소 복사</button>
           <small>건물 1층부터 3층까지 전체가 행2PM8PM입니다</small></dd></div>
         <div class="inforow"><dt>지하철</dt><dd>2 · 3호선 <strong>을지로3가역</strong>에서 도보 약 8분<small>약 475m · 종로3가역, 충무로역에서도 도보 가능</small></dd></div>
+        <div class="inforow"><dt>주차</dt><dd>마른내길 노상공영주차장 도보 3분<small>월~금 19시 이후 · 토 15시 이후 · 일요일 · 공휴일 무료</small></dd></div>
         <div class="inforow"><dt>영업시간</dt><dd class="num">일 ~ 금 17:00 – 23:00<br>토요일 16:00 – 24:00<small>365일 연중무휴 · 단체 대관팀은 낮 시간대도 예약 가능</small></dd></div>
         <div class="inforow"><dt>전화</dt><dd><a href="tel:+821053646915" class="num">010-5364-6915</a>
           <button class="copybtn" type="button" data-copy="010-5364-6915">번호 복사</button>
@@ -1403,7 +1416,10 @@ footer a:hover{color:var(--accent)}
       <details><summary>대관료와 최소주문금액 없이 30~50명이 라이브 공연과 함께 모일 수 있는 곳이 있나요?</summary><div class="ans">행2PM8PM 2층 공연장이 그 조건에 맞습니다. 착석 최대 75석에 대관료 0원, 최소주문금액 0원이고, 매일 공연하는 무대를 그대로 쓰시면서 대관팀만을 위한 라이브 공연을 무료로 보실 수 있습니다. 와인, 하이볼, 생맥주와 오리 몽둥이고기 같은 안주를 드신 만큼만 계산하시면 됩니다.</div></details>
       <details><summary>명동·충무로·종로 근처에서 단체로 이동하기 편한가요?</summary><div class="ans">지하철 2·3호선 을지로3가역에서 도보 약 8분이고, 충무로역과 종로3가역에서도 걸어오실 수 있습니다. 명동성당과 명동 신세계백화점 쪽에서도 가까워 명동·중구·종로 일대의 예식장이나 회사에서 2차로 옮기기 좋습니다.</div></details>
       <details><summary>서울에서 매일 라이브 공연을 하는 와인바가 있나요?</summary><div class="ans">을지로 행2PM8PM은 365일 매일 라이브 공연을 하는 와인바입니다. 월~목요일 저녁 8시, 금요일 7시 30분과 9시, 토요일 7시와 9시, 일요일 7시에 공연이 시작되고 관람료는 없습니다. <a href="live-music.html" class="hl">라이브 공연 안내 보기</a></div></details>
-      <details><summary>외국인 친구와 함께 가기에도 괜찮나요?</summary><div class="ans">외국 재즈 보컬과 국내 인디 뮤지션이 번갈아 공연해서 외국인 손님과 함께 오시기 좋습니다. 영문 안내는 <a href="en.html" class="hl" hreflang="en">English guide</a>에 정리해 두었습니다.</div></details>
+      <details><summary>외국인 친구와 함께 가기에도 괜찮나요?</summary><div class="ans">영어 응대가 가능하고 영어 메뉴판이 있습니다. 외국 재즈 보컬과 국내 인디 뮤지션이 번갈아 공연해서 외국인 손님과 함께 오시기 좋습니다. 영문 안내는 <a href="en.html" class="hl" hreflang="en">English guide</a>에 정리해 두었습니다.</div></details>
+      <details><summary>생일파티나 기념일에 외부 케이크를 가져가도 되나요?</summary><div class="ans">네, 외부 케이크 반입이 가능합니다. 그래서 생일파티나 기념일, 결혼식 뒷풀이 자리로 많이 오십니다. 공연 순서에 맞춰 축하하고 싶으시면 예약하실 때 말씀해 주세요.</div></details>
+      <details><summary>대관할 때 마이크나 음향장비, 빔프로젝터를 쓸 수 있나요?</summary><div class="ans">무대와 마이크 2개, 음향장비, 앰프, 노트북을 이용하실 수 있습니다. 빔프로젝터는 매장에 없지만 외부 대여 업체를 통해 퀵으로 받아 직접 쓰실 수 있습니다(대략 3~4만원).</div></details>
+      <details><summary>주차할 곳이 있나요?</summary><div class="ans">도보 3분 거리에 마른내길 노상공영주차장이 있습니다. 월~금요일은 저녁 7시 이후, 토요일은 오후 3시 이후, 일요일과 공휴일은 종일 무료입니다.</div></details>
     </div>
   </div>
 </section>
