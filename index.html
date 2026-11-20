@@ -149,6 +149,7 @@
       ],
       "sameAs": [
         "https://www.instagram.com/hang_2pm8pm",
+        "https://www.youtube.com/@2pm8pm76",
         "https://map.naver.com/p/entry/place/1799596430",
         "http://place.map.kakao.com/1286938968",
         "https://www.threads.com/@hang_2pm8pm"
@@ -990,7 +991,7 @@ footer a:hover{color:var(--accent)}
 <div class="pop-backdrop" id="xmasPop" role="dialog" aria-modal="true" aria-labelledby="popTitle" hidden>
   <div class="pop">
     <button class="pop-x" type="button" id="popX" aria-label="팝업 닫기"><svg class="ico" aria-hidden="true"><use href="#i-close"/></svg></button>
-    <video class="pop-img" src="pop-live.mp4" poster="pop-live.jpg" autoplay loop muted playsinline preload="auto" aria-label="행2PM8PM 2층 무대에서 진행 중인 라이브 공연 영상"></video>
+    <video class="pop-img" src="pop-live.mp4" poster="pop-live.jpg" loop muted playsinline preload="none" aria-label="행2PM8PM 2층 무대에서 진행 중인 라이브 공연 영상"></video>
     <div class="pop-body">
       <span class="tag">CHRISTMAS 2026</span>
       <h2 id="popTitle">크리스마스 연휴,<br>공연이 하루 <span class="cnt num">5</span>번 있습니다</h2>
@@ -1030,7 +1031,7 @@ footer a:hover{color:var(--accent)}
 <section class="hero" aria-labelledby="h1">
   <div class="hero-stage">
     <div class="hero-bg">
-      <video id="heroVideo" src="hero-stage.mp4" poster="hero-stage.jpg" autoplay muted loop playsinline preload="auto" width="640" height="800" aria-label="행2PM8PM 2층 무대에서 기타 치며 노래하는 라이브 공연 장면 (소리 없음)"></video>
+      <video id="heroVideo" src="hero-stage.mp4" poster="hero-stage.jpg" autoplay muted loop playsinline preload="metadata" width="640" height="800" aria-label="행2PM8PM 2층 무대에서 기타 치며 노래하는 라이브 공연 장면 (소리 없음)"></video>
     </div>
     <span class="tag-live">오늘 밤도 라이브</span>
     <button type="button" class="hero-vbtn" id="heroVbtn" aria-pressed="false" aria-label="영상 멈추기"><svg class="i-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg><svg class="i-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg></button>
@@ -1113,21 +1114,21 @@ footer a:hover{color:var(--accent)}
     <div class="reels">
       <div class="reel rv">
         <div class="reel-frame">
-          <video src="reel-guest-review.mp4" poster="reel-guest-review.jpg" controls autoplay loop muted playsinline preload="metadata" title="손님이 남긴 행2PM8PM 후기 영상"></video>
+          <video src="reel-guest-review.mp4" poster="reel-guest-review.jpg" controls loop muted playsinline preload="none" title="손님이 남긴 행2PM8PM 후기 영상"></video>
           <button class="soundbtn" type="button" aria-pressed="false"><svg class="ico off" aria-hidden="true"><use href="#i-mute"/></svg><svg class="ico on" aria-hidden="true"><use href="#i-sound"/></svg><span class="sb-t">소리 켜기</span></button>
         </div>
         <p class="cap"><b>Guest review</b>손님이 올려주신 후기 — “매일 라이브공연을 하는데 금요일은 벨기에 가수분이 오셔요”</p>
       </div>
       <div class="reel rv d1">
         <div class="reel-frame">
-          <video src="reel-platter-live.mp4" poster="reel-platter-live.jpg" controls autoplay loop muted playsinline preload="metadata" title="하루 두 번 공연이 있는 곳"></video>
+          <video src="reel-platter-live.mp4" poster="reel-platter-live.jpg" controls loop muted playsinline preload="none" title="하루 두 번 공연이 있는 곳"></video>
           <button class="soundbtn" type="button" aria-pressed="false"><svg class="ico off" aria-hidden="true"><use href="#i-mute"/></svg><svg class="ico on" aria-hidden="true"><use href="#i-sound"/></svg><span class="sb-t">소리 켜기</span></button>
         </div>
         <p class="cap"><b>Two stages a day</b>하루 두 번 무대가 열리는 날 — 와인과 행플레이터</p>
       </div>
       <div class="reel rv d2">
         <div class="reel-frame">
-          <video src="reel-chey-rental.mp4" poster="reel-chey-rental.jpg" controls autoplay loop muted playsinline preload="metadata" title="대관료 0원 단체 대관 안내"></video>
+          <video src="reel-chey-rental.mp4" poster="reel-chey-rental.jpg" controls loop muted playsinline preload="none" title="대관료 0원 단체 대관 안내"></video>
           <button class="soundbtn" type="button" aria-pressed="false"><svg class="ico off" aria-hidden="true"><use href="#i-mute"/></svg><svg class="ico on" aria-hidden="true"><use href="#i-sound"/></svg><span class="sb-t">소리 켜기</span></button>
         </div>
         <p class="cap"><b>Private rental</b>벽에 걸린 친필 사인, 그리고 대관료 0원 단체 대관</p>
@@ -1452,7 +1453,7 @@ footer a:hover{color:var(--accent)}
           <small>대관 문의는 365일 24시간 상담받습니다</small></dd></div>
         <div class="inforow"><dt>예약</dt><dd><a href="https://map.naver.com/p/entry/place/1799596430?placePath=%2Fbooking%3FfromPanelNum%3D1%26additionalHeight%3D76%26locale%3Dko%26svcName%3Dmap_pcv5&amp;entry=plt&amp;searchType=place" target="_blank" rel="noopener">네이버 예약 바로가기</a><small>단체 대관은 전화 문의가 빠릅니다</small></dd></div>
         <div class="inforow"><dt>카카오톡 · 이메일</dt><dd>카카오톡 ID <strong>ihlee070</strong><br><a href="mailto:goddls070@naver.com">goddls070@naver.com</a><small>대관 견적이나 단체 문의를 글로 남기셔도 됩니다</small></dd></div>
-        <div class="inforow"><dt>SNS</dt><dd><a href="https://www.instagram.com/hang_2pm8pm" target="_blank" rel="noopener">@hang_2pm8pm</a><small>공연 라인업과 이벤트 소식을 올립니다</small></dd></div>
+        <div class="inforow"><dt>SNS</dt><dd><a href="https://www.instagram.com/hang_2pm8pm" target="_blank" rel="noopener">인스타그램 @hang_2pm8pm</a> · <a href="https://www.youtube.com/@2pm8pm76" target="_blank" rel="noopener">유튜브 @2pm8pm76</a><small>공연 라인업과 이벤트 소식, 공연 영상을 올립니다</small></dd></div>
         <div class="inforow"><dt>주변</dt><dd>명동성당 · 명보아트홀 · 서울영화센터 · 명동 신세계백화점 · 을지로 만선호프 거리 · 을지로 골뱅이골목 · 종로3가 야장거리<small>공연 관람이나 저녁 약속, 쇼핑 전후로 들르기 좋습니다</small></dd></div>
       </dl>
       <div class="rv d1">
@@ -1587,6 +1588,7 @@ footer a:hover{color:var(--accent)}
           <a href="wedding-afterparty.html">결혼식 뒷풀이</a><a href="group-rental.html">단체 대관</a><a href="company-dinner.html">회식 · 송년회</a><a href="live-music.html">라이브 공연</a><a href="euljiro-oden-bar.html">을지로 오뎅탕</a><a href="en.html" hreflang="en">English</a><a href="zh-hans.html" hreflang="zh-Hans">简体中文</a><a href="zh-hant.html" hreflang="zh-Hant">繁體中文</a><a href="ja.html" hreflang="ja">日本語</a>
           <a href="https://map.naver.com/p/entry/place/1799596430" target="_blank" rel="noopener">네이버 지도</a>
           <a href="https://www.instagram.com/hang_2pm8pm" target="_blank" rel="noopener">인스타그램</a>
+          <a href="https://www.youtube.com/@2pm8pm76" target="_blank" rel="noopener">유튜브</a>
         </nav>
       </div>
     </div>
@@ -1645,12 +1647,15 @@ footer a:hover{color:var(--accent)}
     }catch(e){}
     pop.hidden = true;
     document.body.style.overflow = "";
+    var pv = pop.querySelector("video"); if(pv) pv.pause();
   }
   if(pop && !hiddenToday()){
     setTimeout(function(){
       pop.hidden = false;
       document.body.style.overflow = "hidden";
       var x = document.getElementById("popX"); if(x) x.focus();
+      var pv = pop.querySelector("video");
+      if(pv){ var pp = pv.play(); if(pp && pp.catch) pp.catch(function(){}); }
     }, 900);
   }
   ["popX","popClose"].forEach(function(id){
