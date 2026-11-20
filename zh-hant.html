@@ -27,6 +27,14 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="pages.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H9CD1SL413"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','G-H9CD1SL413');
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';
+var n=h.indexOf('tel:')===0?'click_call':h.indexOf('placePath=%2Fbooking')>-1?'click_naver_booking':h.indexOf('map.naver.com')>-1||h.indexOf('kakao.com')>-1?'click_map':/instagram\.com|youtube\.com|threads\.com/.test(h)?'click_sns':h.indexOf('mailto:')===0?'click_email':'';
+if(n)gtag('event',n,{link_url:h});});
+</script>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
